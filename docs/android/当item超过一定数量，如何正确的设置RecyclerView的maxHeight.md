@@ -12,7 +12,7 @@
         android:maxHeight="100dp" />
 ```
 
-![warp_recycler_view.gif](https://i.loli.net/2020/11/06/a9ntXMs5AyrcGD1.gif)
+![warp_recycler_view.gif](imgs/warp_recycler_view.gif)
 
 那么为什么会造成这种原因呢？其实在我之前写的一篇博客也提到过：`RecyclerView`将`onMeasure`的转交给了`LayoutManager`，并且`LayoutManager`里面有个`isAutoMeasureEnabled（）`方法用来配置`LayoutManager`是否开启`自测量`。我们常用的`LinearLayoutManager`或`GridLayoutManager`都是默认返回`true`的。
 
@@ -110,7 +110,7 @@ class MaxLineLinearLayoutManager : LinearLayoutManager {
  recyclerView.layoutManager = MaxLineLinearLayoutManager(this, maxLine = 3)
 ```
 
-![maxline_layoutmanager.gif](https://i.loli.net/2020/11/06/7VRBYIiEZ2WbP8a.gif)
+![maxline_layoutmanager.gif](imgs/maxline_layoutmanager.gif)
 
 ## 源码地址
 

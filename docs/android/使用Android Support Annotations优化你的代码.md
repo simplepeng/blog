@@ -1,10 +1,8 @@
----
-title: 使用Android Support Annotations优化你的代码
----
+# 使用Android Support Annotations优化你的代码
 
 Android Support Annotations提供的注解允许你像lint检查那样提供一些提示信息在审查代码上，这可以帮助你解决一些难以发现的代码问题。
-****
-###  **添加依赖**
+
+##  **添加依赖**
 
  1. 选择**File > Project Structure**
  2. 点击**Dependencies**标签
@@ -19,7 +17,7 @@ dependencies {
 ```
 
 ***
-### **Nullness 注解**
+## **Nullness 注解**
 
 添加@Nullable和@NonNull注解去检验一个给定的变量，参数或者返回的值是否有效。
 
@@ -43,7 +41,7 @@ import android.support.annotation.NonNull;
 ```
 
 ***
-###  **Resource 注解**
+##  **Resource 注解**
 
 对Android引用的资源类型验证，可以用来区分像**Drawables**和 **R.string**这种同是integer的类型资源。
 
@@ -57,7 +55,7 @@ import android.support.annotation.StringRes;
 同类型的注解还有 @DrawableRes, @DimenRes, @ColorRes, 和@InterpolatorRes等等
 
 ***
-###  **Thread 注解**
+##  **Thread 注解**
 
 如果一个方法需要在特定类型的线程中调用，就可以添加这些注解帮助代码审查。
 
@@ -72,7 +70,7 @@ import android.support.annotation.StringRes;
 > 注意： @MainThread 和 @UiThread 是可以互换的，所以被注解方法只允许从这2个注解声明的线程中调用。
 
 ***
-###  **Value Constraint 注解**
+##  **Value Constraint 注解**
 
 使用@IntRange, @FloatRange, 和 @Size 注解检对传递的参数进行验证。
 
@@ -122,7 +120,7 @@ public static final void copyFile(String dest, String source) {
 ```
 
 ***
-###  **CheckResults 注解**
+##  **CheckResults 注解**
 
 使用@CheckResults注解检验方法的结果或返回值是否有使用。
 
@@ -132,7 +130,7 @@ public abstract int checkPermission(@NonNull String permission, int pid, int uid
 ```
 
 ***
-###  **CallSuper 注解**
+##  **CallSuper 注解**
 
 使用@CallSuper注解检验方法是否调用super实现了父类的方法。
 
@@ -144,7 +142,7 @@ protected void onCreate(Bundle savedInstanceState) {
 ```
 
 ***
-### **Enumerated 注解**
+## **Enumerated 注解**
 
 使用**@IntDef** 和 **@StringDef** 注解可以使用注解方式代替枚举实现整型或字符串的列举类型，以检验其他类型的代码引用。
 
@@ -197,7 +195,7 @@ public @interface DisplayOptions {}
 如果修饰的参数或返回的值不引用一个有效的模式，那么在你构建这段代码时就会生成一段警告。
 
 ***
-### **总结**
+## **总结**
 
 | 注解 | 解释 |
 | ------------- |-------------|
