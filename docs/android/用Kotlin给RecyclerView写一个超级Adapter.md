@@ -57,8 +57,6 @@ class RvAdapter constructor(private val layoutId: Int, private val itemList: Lis
 }
 ```
 
-<img src="https://ws1.sinaimg.cn/mw690/00677ch9gy1fn3s07j8d4j30u01hc75y" width="220"/>
-
 ## 用Kotlin封装一个最初始的Adapter
 
 ```java

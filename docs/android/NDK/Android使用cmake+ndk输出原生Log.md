@@ -1,4 +1,4 @@
-# Android使用cmake+ndk输出原生Log
+# Android使用CMake+NDK输出原生Log
 
 我们可以在c/cpp代码中用**print**函数输出log信息，但是这样在**logcat并**不会显示，好在Android已经给我提供了相应的方法解决这个问题：使用**log.h**头文件
 
@@ -13,8 +13,6 @@
 生成好的项目会在**main**目录下创建好**cpp**目录和相应的cpp文件，以及**CmakeLists**文件
 
 ![](https://ws1.sinaimg.cn/mw690/00677ch9gy1fu96plq7aij30b40h8jsz)
-
-
 
 ### CmakeLists
 

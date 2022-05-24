@@ -1,6 +1,4 @@
----
-title: ViewPagerTransforms的深入理解-给viewpager切换加动画
----
+# ViewPagerTransforms的深入理解-给viewpager切换加动画
 
 github地址：
 >https://github.com/simplepeng/ViewPagerTransforms
@@ -9,7 +7,7 @@ github地址：
 
 但是这样的属性动画只能支持到android3.0版本或以上，在早期的版本上设置viewpager的PageTransformer会被忽略。
 
-###公有方法
+### 公有方法
 
 **transformPage**   应用属性动画到一个指定的页面
 ```
@@ -20,8 +18,7 @@ void transformPage (View page, float position)
 | pager       |  View: 应用切换动画到哪一个页面上 |
 | position | float: position表示相对于当前页正中的位置，0表示在正中的这个页面，1表示右边一个完整的页面，-1表示左边一个完整的页面 |
 
-
-###首先是一个很平常的viewpager
+### 首先是一个很平常的viewpager
 
 ![这里写图片描述](http://img.blog.csdn.net/20160819101519477)
 ```java
@@ -294,7 +291,6 @@ public class SimplePageTransform implements ViewPager.PageTransformer {
 * transformPage返回的view的区间[-1,0)这个区间为left，(0，1]这个区间为right，只有当等于0为center
 *  viewpager的PageTransformer是在3.0以后加的新特性
  * ps:如果想兼容3.0以下也有办法，要么用反射，要么就自己自定义一个view实现viewpager所有功能，其实android很多兼容包都会利用反射技能去兼容低版本无法使用新特性这样一个缺点
-
 
 
 

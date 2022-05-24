@@ -1,6 +1,5 @@
----
-title: RxJava常用操作符
----
+# RxJava常用操作符
+
 ## 原文地址
 
 > http://reactivex.io/documentation/operators.html#alphabetical

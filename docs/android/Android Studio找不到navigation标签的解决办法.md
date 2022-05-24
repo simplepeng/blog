@@ -1,3 +1,5 @@
+# Android Studio找不到navigation标签的解决办法
+
 最近在学习JetPack-Navigation组件的使用，但是在AS中能新建navigation的文件夹却不能新建navigation的xml文件，于是上Stack Overflow找了一下解决办法还真找到了。
 
 ## 解决办法

@@ -8,6 +8,8 @@ firda需要root权限，可以使用MuMu模拟器。
 
 ## 合并多dex
 
+apk dex分包后需要先合并dex
+
 ```python
 #!/usr/bin/env python
 import os, sys

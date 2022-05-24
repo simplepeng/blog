@@ -1,6 +1,6 @@
 # kotlin使用Parcelize注解简化Parcelable的书写
 
-##Parcelize注解
+## Parcelize注解
 
 kotlin在1.1.4版本增加了对parcelable的支持
 

@@ -1,4 +1,4 @@
-# 优化嵌套的RecyclerView
+# [译]优化嵌套的RecyclerView
 
 RecyclerView是ListView的更高级版本，它重用相同的视图以防止额外创建视图以提供平滑的滚动体验。RecyclerView通过保持视图池来实现这一点，该视图池包含不再可见并且可以回收的视图。
 

@@ -1,3 +1,4 @@
+# 自定义SnackBar
 
 我浏览material.io网站时，从所谓的“Material Design 2”中找到一些新的组件，并发现Snackbar已经改变了，它不再占用整个屏幕长度，并且周围会有一个间距。
 
