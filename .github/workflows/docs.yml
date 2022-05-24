@@ -3,8 +3,6 @@ name: CI
 on:
   push:
     branches: [ main ]
-  pull_request:
-    branches: [ main ]
 
   workflow_dispatch:
 
@@ -14,12 +12,11 @@ jobs:
 
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-python@v3.1.2
 
-      - name: install mkdocs
-        run: pip install --upgrade pip && pip install mkdocs mkdocs-gen-files
-        run: git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
+      - uses: actions/setup-python@v3.1.2
+      - run: pip install --upgrade pip && pip install mkdocs mkdocs-gen-files
+      - run: git config user.name 'github-actions[bot]' && git config user.email 'github-actions[bot]@users.noreply.github.com'
       
-      - name: Publish docs
+      - name: publish docs
         run: mkdocs gh-deploy
 
