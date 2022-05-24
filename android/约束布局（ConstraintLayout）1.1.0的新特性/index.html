@@ -1,0 +1,404 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>约束布局（ConstraintLayout）1.1.0的新特性 - simplepeng</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7ea6\u675f\u5e03\u5c40\uff08ConstraintLayout\uff091.1.0\u7684\u65b0\u7279\u6027";
+        var mkdocs_page_input_path = "android/\u7ea6\u675f\u5e03\u5c40\uff08ConstraintLayout\uff091.1.0\u7684\u65b0\u7279\u6027.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> simplepeng
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">摘要</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Android</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../ADB%20%E5%BD%95%E5%88%B6%E5%B1%8F%E5%B9%95%E5%91%BD%E4%BB%A4/">ADB 录制屏幕命令</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../AS%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/">AS本地Maven仓库搭建</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%20Gradle%20manifestPlaceholders%20%E7%9A%84%E5%A6%99%E7%94%A8/">Android Gradle manifestPlaceholders 的妙用</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%20Material%20buttons/">[译]Android Material buttons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%20Selector%E7%9A%84%E7%AE%80%E5%86%99/">Android Selector的简写</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%20Studio%E6%89%BE%E4%B8%8D%E5%88%B0navigation%E6%A0%87%E7%AD%BE%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Android Studio找不到navigation标签的解决办法</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%E5%B9%B3%E5%8F%B0%E7%9A%84Swift%E2%80%94Kotlin%E5%85%A5%E9%97%A8%E8%AE%B2%E8%A7%A3/">Android平台的Swift—Kotlin入门讲解</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%28Architecture%20Components%29%E4%BB%8B%E7%BB%8D/">Android架构组件(Architecture Components)介绍</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94LiveData/">Android架构组件—LiveData</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94Room/">Android架构组件Room的使用</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94ViewModel/">探索Android架构模式中ViewModel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../EventBus%E6%90%AD%E9%85%8DLifeCycle%E5%8F%AF%E8%83%BD%E6%9B%B4%E7%BE%8E%E5%91%B3/">EventBus搭配LifeCycle可能更美味</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../Kotlin%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0let%2Capply%2Calso%2Cwith%2Crun/">Kotlin内建函数let,apply,also,with,run.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../PopupMenu%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">PopupMenu简单使用</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../RxJava%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E7%AC%A6/">RxJava常用操作符</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ViewDragHelper%E7%AE%80%E8%A7%A3/">ViewDragHelper简解</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../ViewPageerTransform%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%2C%E7%BB%99viewpager%E5%88%87%E6%8D%A2%E5%8A%A0%E5%8A%A8%E7%94%BB/">ViewPagerTransforms的深入理解-给viewpager切换加动画</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../kotlin%E4%BD%BF%E7%94%A8Parcelize%E6%B3%A8%E8%A7%A3%E7%AE%80%E5%8C%96Parcelable%E7%9A%84%E4%B9%A6%E5%86%99/">kotlin使用Parcelize注解简化Parcelable的书写</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E4%BB%8EJava%E5%88%87%E6%8D%A2%E5%88%B0Kotlin%EF%BC%9A5%E4%B8%AA%E4%BB%A4Android%E5%BC%80%E5%8F%91%E8%80%85%E5%85%B4%E5%A5%8B%E7%9A%84%E7%89%B9%E5%BE%81/">[译]从Java切换到Kotlin：5个令Android开发者兴奋的特征</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E4%BC%98%E5%8C%96%E5%B5%8C%E5%A5%97%E7%9A%84RecyclerView/">[译]优化嵌套的RecyclerView</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Android%20Support%20Annotations%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/">使用Android Support Annotations优化你的代码</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/">使用Gradle和Kotlin组织Android的资源文件</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">在Activity的onCreate方法中调用finish的生命周期</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E5%BD%93item%E8%B6%85%E8%BF%87%E4%B8%80%E5%AE%9A%E6%95%B0%E9%87%8F%EF%BC%8C%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AE%BE%E7%BD%AERecyclerView%E7%9A%84maxHeight/">当item超过一定数量，如何正确的设置RecyclerView的maxHeight</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/">无障碍服务研究</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/">用Kotlin给RecyclerView封装一个Adapter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E7%9C%8B%E5%AE%8C%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%BD%A0%E8%BF%98%E4%B8%8D%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager%EF%BC%9F/">看完这篇文章你还不会自定义LayoutManager？</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">约束布局（ConstraintLayout）1.1.0的新特性</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#circular-positioning">圆形定位（Circular Positioning）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#barrier">屏障（Barrier）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#group">分组（Group）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#placeholder">占位符（PlaceHolder）</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#dimension-constraints">尺寸约束（Dimension constraints）</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">百分比约束</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/">自定义SnackBar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7-SpiderMan/">如何自定义一个全局异常捕获器-SpiderMan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">FFmpeg</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../FFmpeg/1.FFmpeg4.3%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93-Android%2BCmake%2Bndk-r21b/">FFmpeg编译成so库</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FFmpeg/2.FFmpeg%E8%8E%B7%E5%8F%96%E8%A7%86%E9%A2%91%E9%A6%96%E5%B8%A7%E8%BD%AC%E5%B0%81%E9%9D%A2%E5%9B%BEBitmap/">FFmpeg获取视频首帧转封面图Bitmap</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../FFmpeg/3.%E7%BC%96%E8%AF%91Android%E4%B8%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%9A%84FFmpeg/">编译Android下可执行命令的FFmpeg</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">NDK</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../NDK/Android%E4%BD%BF%E7%94%A8cmake%2Bndk%E8%BE%93%E5%87%BA%E5%8E%9F%E7%94%9FLog/">Android使用CMake+NDK输出原生Log</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NDK/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Cmake学习笔记</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NDK/JNI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">JNI学习笔记</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../NDK/%E7%BB%99%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0JNI-CMake%E6%94%AF%E6%8C%81/">给已有项目添加JNI/CMake支持</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">源码分析系列</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E7%B3%BB%E5%88%97/%E6%88%91%E5%AF%B9Retrofit%E7%9A%84%E7%90%86%E8%A7%A3/">我对Retrofit的理解</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">自定义View</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89View/Canvas%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/">Canvas构造方法解析</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89View/%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/">自定义View的构造方法解析</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">逆向</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8FRIDA-DEXDump%E8%84%B1%E5%A3%B3/">使用FRIDA-DEXDump脱壳</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8MuMu%E6%A8%A1%E6%8B%9F%E5%99%A8%2BXposed%2BFdex2%E8%84%B1360%E5%8A%A0%E5%9B%BA%E7%9A%84%E5%A3%B3/">使用MuMu模拟器+Xposed+Fdex2脱360加固的壳</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">其他</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E5%85%B6%E4%BB%96/HenCoder-5%E6%9C%9F-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">HenCoder-5期-学习笔记</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E5%85%B6%E4%BB%96/MacOS%2010.10%20%E4%BB%A5%E4%B8%8A%E8%A7%A3%E5%86%B3%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB/">MacOS 10.10 以上解决机械键盘按键无法识别</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E5%85%B6%E4%BB%96/%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%20TensorFlow/">极客时间 TensorFlow</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../%E5%85%B6%E4%BB%96/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9F%B3%E8%A7%86%E9%A2%91%E5%85%A5%E9%97%A8-FFmpeg%28%E5%85%AC%E5%8F%B8%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%29/">移动端音视频入门 FFmpeg(公司技术分享)</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">simplepeng</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Android &raquo;</li><li>约束布局（ConstraintLayout）1.1.0的新特性</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/约束布局（ConstraintLayout）1.1.0的新特性.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="constraintlayout110">约束布局（ConstraintLayout）1.1.0的新特性</h1>
+<p>约束布局无疑是最适合构建响应式用户界面的布局-根据屏幕大小自动调整的布局。很高兴ConstraintLayout发布了1.1.0版本，1.1.0的这些新特性让ConstraintLayout能够做出更好的工作，并且不丢失原有的特性。</p>
+<h2 id="circular-positioning">圆形定位（Circular Positioning）</h2>
+<p>当一个View需要根据另一个View进行定位时，该角度和距离是从两个视图的中心点测量的。就像以某种角度和距离围绕行星旋转的卫星。</p>
+<p><img alt="circular positon" src="http://p6uvwa6u4.bkt.clouddn.com/img/1_GzLnKniwl1dbhNA2J5WyzQ.png" /></p>
+<p>被约束的View可以对齐到相对于其中心View的任何角度和半径</p>
+<ul>
+<li><strong>app:layout_constraintCircle</strong>—对齐于哪个View</li>
+<li><strong>app:layout_constraintCircleAngle</strong>—对齐的角度</li>
+<li><strong>app:layout_constraintCircleRadius</strong> —对齐View的距离（半径）</li>
+</ul>
+<pre><code class="language-xml">&lt;Button
+    android:id=&quot;@+id/btCenter&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Center Button&quot;/&gt;
+
+&lt;Button
+    android:id=&quot;@+id/btAlign&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Aligned Button&quot;
+    app:layout_constraintCircle=&quot;@id/btCenter&quot;
+    app:layout_constraintCircleAngle=&quot;45&quot;
+    app:layout_constraintCircleRadius=&quot;120dp&quot; /&gt;
+</code></pre>
+<h2 id="barrier">屏障（Barrier）</h2>
+<p>它能够在运行时根据指定端可用视图的最大宽度创建导线（guideline）。这意味着视图的宽度减小或增加导线会自动移动以与视图的宽度保持一致。屏障与具有最大宽度的视图保持一致，该视图与被引用的视图组中的视图具有最大宽度。</p>
+<p><img alt="" src="http://p6uvwa6u4.bkt.clouddn.com/img/1_rHW1BKt1jLHorT9JSxc7tg.png" /></p>
+<p>屏障可以设置为开始，结束，顶部，底部 - 这里蓝色框始终保留在屏障的右侧，根据灰色框中的最大宽度计算屏障指引。</p>
+<pre><code class="language-xml">&lt;Button
+    android:id=&quot;@+id/btName&quot;
+    android:layout_width=&quot;100dp&quot;
+    android:layout_height=&quot;wrap_content&quot; /&gt;
+
+&lt;Button
+    android:id=&quot;@+id/btAge&quot;
+    android:layout_width=&quot;150dp&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    app:layout_constraintTop_toBottomOf=&quot;@+id/btName&quot; /&gt;
+
+&lt;android.support.constraint.Barrier
+    android:id=&quot;@+id/barrier&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    app:barrierDirection=&quot;end&quot;
+    app:constraint_referenced_ids=&quot;btName,btAge&quot; /&gt;
+
+&lt;Button
+    android:id=&quot;@+id/btAddress&quot;
+    android:layout_width=&quot;120dp&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    app:layout_constraintStart_toEndOf=&quot;@+id/barrier&quot; /&gt;
+</code></pre>
+<p>这里<strong>btAge</strong>由具有150dp是大于的宽度<strong>btName</strong>具有100dp所以垒宽度150dp之后将设置的导线。在运行期间，如果宽度变化超过屏障，则会自动重新计算导线并进一步推移引用的View。</p>
+<h2 id="group">分组（Group）</h2>
+<p>这是令很多人充满期待的功能。如果多个视图可见性（visibility ）需要设置为显示或隐藏，用Group则可以轻松的完成。想想一个包含各种View的ViewGroup，只需要设置ViewGroup的visibility 为显示或隐藏，它的所有被包含的子View也会同时被显示或隐藏。现在使用Group就可以完成同样的需求，但他并不是一个ViewGroup，它是在平面结构上的一个Group，只需要引用相关View的Id即可。</p>
+<pre><code class="language-xml">&lt;Button
+    android:id=&quot;@+id/btCenter&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Center Button&quot;
+    android:textAllCaps=&quot;false&quot;
+    app:layout_constraintBottom_toBottomOf=&quot;parent&quot;
+    app:layout_constraintLeft_toLeftOf=&quot;parent&quot;
+    app:layout_constraintRight_toRightOf=&quot;parent&quot;
+    app:layout_constraintTop_toTopOf=&quot;parent&quot; /&gt;
+
+&lt;Button
+    android:id=&quot;@+id/btAlign&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Aligned Button&quot;
+    android:textAllCaps=&quot;false&quot;
+    app:layout_constraintCircle=&quot;@id/btCenter&quot;
+    app:layout_constraintCircleAngle=&quot;45&quot;
+    app:layout_constraintCircleRadius=&quot;120dp&quot; /&gt;
+
+&lt;android.support.constraint.Group
+    android:id=&quot;@+id/group&quot;
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:visibility=&quot;gone&quot;
+    app:constraint_referenced_ids=&quot;btAlign,btCenter&quot; /&gt;
+</code></pre>
+<h2 id="placeholder">占位符（PlaceHolder）</h2>
+<p>它用于在屏幕上动态设置内容，只需传递它的id即可将任何视图设置为占位符。如果视图与占位符在同一屏幕上存在，则其可见性将自动设置为消失。</p>
+<pre><code class="language-xml">&lt; ImageView 
+    android：id =“@ + id / iv_call” 
+    android：layout_width =“wrap_content” 
+    android：layout_height =“wrap_content” 
+    android：src =“@ drawable / ic_launcher_background” /&gt; 
+
+&lt; android.support.constraint.Placeholder 
+    android：layout_width =“match_parent” 
+    android：layout_height =“100dp” 
+    app：content =“@ + id / iv_call” 
+    app：layout_constraintBottom_toBottomOf =“parent” /&gt;
+</code></pre>
+<p>以编程方式设置内容，请使用  <strong>placeholder.setContentId（viewId）</strong></p>
+<h2 id="dimension-constraints">尺寸约束（Dimension constraints）</h2>
+<p>通常需要将视图宽度或高度保持为包裹内容（wrap content）而不是匹配约束（match constraint）或匹配父项（match parent），但不幸的是包裹内容会覆盖应用的约束，并且在宽度或高度更改时与约束重叠</p>
+<p>在1.1.0版本中，这个问题可以通过使用</p>
+<blockquote>
+<p>app:layout_constrainedWidth=”true”</p>
+</blockquote>
+<p>或</p>
+<blockquote>
+<p>app:layout_constrainedHeight=”true”</p>
+</blockquote>
+<p>来解决，它所做的是强制约束，并让视图宽度/高度保持为包裹内容</p>
+<p><img alt="" src="http://p6uvwa6u4.bkt.clouddn.com/img/1_JGnz4r7tn1RwC4ZDw3WTtQ.png" /></p>
+<pre><code class="language-xml">&lt;Button
+    android:layout_width=&quot;wrap_content&quot;
+    android:layout_height=&quot;wrap_content&quot;
+    android:text=&quot;Hello this is an example with constraint width&quot;
+    app:layout_constrainedWidth=&quot;true&quot;
+    app:layout_constraintLeft_toLeftOf=&quot;parent&quot;
+    app:layout_constraintRight_toRightOf=&quot;@+id/guideline_50&quot;/&gt;
+</code></pre>
+<h3 id="_1">百分比约束</h3>
+<p>约束布局真正缺少的一件事就是能够按百分比定义宽度和高度。在百分比中定义宽度或高度对于创建富有表现力的UI来说非常有用，因为在移动设备或平板电脑上查看时，dp中的宽度或高度并不能很好地工作。</p>
+<p>但是现在可以使用</p>
+<blockquote>
+<p><strong>layout_constraintWidth_percent</strong></p>
+<p><strong>layout_constraintHeight_percent</strong></p>
+</blockquote>
+<p>以百分比的形式定义宽度和高度<strong>。</strong></p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>为了使用百分比来表示宽度和高度，尺寸应该是匹配约束（0dp），而</p>
+<p><strong>app：layout_constraintWidth_default =“percent</strong></p>
+<p>或</p>
+<p><strong>app：layout_constraintHeight_default =”percent“</strong></p>
+<p>需要设置为百分比形式</p>
+</blockquote>
+<pre><code class="language-xml">&lt; TextView 
+    android：id =“@ + id / bt” 
+    android：layout_width =“0dp” 
+    android：layout_height =“wrap_content” 
+    android：text =“Hello宽度百分比” 
+    app：layout_constraintWidth_default =“percent” 
+    app：layout_constraintWidth_percent =“0.5 “ 
+    app：layout_constraintLeft_toLeftOf =”parent“ /&gt;
+</code></pre>
+<p>百分比可以定义在0到1之间，其中1表示100％。这里宽度通过使用0.5被定义为50％。</p>
+<p>通过使用约束集来实现动画的约束布局更加酷炫，使用约束优化器和复杂链支持来优化布局。很高兴看到约束布局正在增加构建卓越UI的能力。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../%E7%9C%8B%E5%AE%8C%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%BD%A0%E8%BF%98%E4%B8%8D%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager%EF%BC%9F/" class="btn btn-neutral float-left" title="看完这篇文章你还不会自定义LayoutManager？"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/" class="btn btn-neutral float-right" title="自定义SnackBar">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/simplepeng/blog" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../%E7%9C%8B%E5%AE%8C%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%BD%A0%E8%BF%98%E4%B8%8D%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager%EF%BC%9F/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>

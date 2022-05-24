@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>移动端音视频入门 FFmpeg(公司技术分享) - simplepeng</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u79fb\u52a8\u7aef\u97f3\u89c6\u9891\u5165\u95e8 FFmpeg(\u516c\u53f8\u6280\u672f\u5206\u4eab)";
+        var mkdocs_page_input_path = "\u5176\u4ed6/\u79fb\u52a8\u7aef\u97f3\u89c6\u9891\u5165\u95e8-FFmpeg(\u516c\u53f8\u6280\u672f\u5206\u4eab).md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../.." class="icon icon-home"> simplepeng
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">摘要</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Android</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/ADB%20%E5%BD%95%E5%88%B6%E5%B1%8F%E5%B9%95%E5%91%BD%E4%BB%A4/">ADB 录制屏幕命令</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/AS%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/">AS本地Maven仓库搭建</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%20Gradle%20manifestPlaceholders%20%E7%9A%84%E5%A6%99%E7%94%A8/">Android Gradle manifestPlaceholders 的妙用</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%20Material%20buttons/">[译]Android Material buttons</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%20Selector%E7%9A%84%E7%AE%80%E5%86%99/">Android Selector的简写</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%20Studio%E6%89%BE%E4%B8%8D%E5%88%B0navigation%E6%A0%87%E7%AD%BE%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Android Studio找不到navigation标签的解决办法</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%E5%B9%B3%E5%8F%B0%E7%9A%84Swift%E2%80%94Kotlin%E5%85%A5%E9%97%A8%E8%AE%B2%E8%A7%A3/">Android平台的Swift—Kotlin入门讲解</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%28Architecture%20Components%29%E4%BB%8B%E7%BB%8D/">Android架构组件(Architecture Components)介绍</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94LiveData/">Android架构组件—LiveData</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94Room/">Android架构组件Room的使用</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94ViewModel/">探索Android架构模式中ViewModel</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/EventBus%E6%90%AD%E9%85%8DLifeCycle%E5%8F%AF%E8%83%BD%E6%9B%B4%E7%BE%8E%E5%91%B3/">EventBus搭配LifeCycle可能更美味</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/Kotlin%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0let%2Capply%2Calso%2Cwith%2Crun/">Kotlin内建函数let,apply,also,with,run.md</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/PopupMenu%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">PopupMenu简单使用</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/RxJava%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E7%AC%A6/">RxJava常用操作符</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/ViewDragHelper%E7%AE%80%E8%A7%A3/">ViewDragHelper简解</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/ViewPageerTransform%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%2C%E7%BB%99viewpager%E5%88%87%E6%8D%A2%E5%8A%A0%E5%8A%A8%E7%94%BB/">ViewPagerTransforms的深入理解-给viewpager切换加动画</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/kotlin%E4%BD%BF%E7%94%A8Parcelize%E6%B3%A8%E8%A7%A3%E7%AE%80%E5%8C%96Parcelable%E7%9A%84%E4%B9%A6%E5%86%99/">kotlin使用Parcelize注解简化Parcelable的书写</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E4%BB%8EJava%E5%88%87%E6%8D%A2%E5%88%B0Kotlin%EF%BC%9A5%E4%B8%AA%E4%BB%A4Android%E5%BC%80%E5%8F%91%E8%80%85%E5%85%B4%E5%A5%8B%E7%9A%84%E7%89%B9%E5%BE%81/">[译]从Java切换到Kotlin：5个令Android开发者兴奋的特征</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E4%BC%98%E5%8C%96%E5%B5%8C%E5%A5%97%E7%9A%84RecyclerView/">[译]优化嵌套的RecyclerView</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E4%BD%BF%E7%94%A8Android%20Support%20Annotations%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/">使用Android Support Annotations优化你的代码</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/">使用Gradle和Kotlin组织Android的资源文件</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">在Activity的onCreate方法中调用finish的生命周期</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E5%BD%93item%E8%B6%85%E8%BF%87%E4%B8%80%E5%AE%9A%E6%95%B0%E9%87%8F%EF%BC%8C%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AE%BE%E7%BD%AERecyclerView%E7%9A%84maxHeight/">当item超过一定数量，如何正确的设置RecyclerView的maxHeight</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/">无障碍服务研究</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/">用Kotlin给RecyclerView封装一个Adapter</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E7%9C%8B%E5%AE%8C%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%BD%A0%E8%BF%98%E4%B8%8D%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager%EF%BC%9F/">看完这篇文章你还不会自定义LayoutManager？</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E7%BA%A6%E6%9D%9F%E5%B8%83%E5%B1%80%EF%BC%88ConstraintLayout%EF%BC%891.1.0%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">约束布局（ConstraintLayout）1.1.0的新特性</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/">自定义SnackBar</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../android/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7-SpiderMan/">如何自定义一个全局异常捕获器-SpiderMan</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">FFmpeg</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/FFmpeg/1.FFmpeg4.3%E7%BC%96%E8%AF%91%E5%8A%A8%E6%80%81%E5%BA%93-Android%2BCmake%2Bndk-r21b/">FFmpeg编译成so库</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/FFmpeg/2.FFmpeg%E8%8E%B7%E5%8F%96%E8%A7%86%E9%A2%91%E9%A6%96%E5%B8%A7%E8%BD%AC%E5%B0%81%E9%9D%A2%E5%9B%BEBitmap/">FFmpeg获取视频首帧转封面图Bitmap</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/FFmpeg/3.%E7%BC%96%E8%AF%91Android%E4%B8%8B%E5%8F%AF%E6%89%A7%E8%A1%8C%E5%91%BD%E4%BB%A4%E7%9A%84FFmpeg/">编译Android下可执行命令的FFmpeg</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">NDK</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/NDK/Android%E4%BD%BF%E7%94%A8cmake%2Bndk%E8%BE%93%E5%87%BA%E5%8E%9F%E7%94%9FLog/">Android使用CMake+NDK输出原生Log</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/NDK/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Cmake学习笔记</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/NDK/JNI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">JNI学习笔记</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/NDK/%E7%BB%99%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0JNI-CMake%E6%94%AF%E6%8C%81/">给已有项目添加JNI/CMake支持</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">源码分析系列</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90%E7%B3%BB%E5%88%97/%E6%88%91%E5%AF%B9Retrofit%E7%9A%84%E7%90%86%E8%A7%A3/">我对Retrofit的理解</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">自定义View</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/%E8%87%AA%E5%AE%9A%E4%B9%89View/Canvas%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/">Canvas构造方法解析</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/%E8%87%AA%E5%AE%9A%E4%B9%89View/%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/">自定义View的构造方法解析</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">逆向</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8FRIDA-DEXDump%E8%84%B1%E5%A3%B3/">使用FRIDA-DEXDump脱壳</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../android/%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8MuMu%E6%A8%A1%E6%8B%9F%E5%99%A8%2BXposed%2BFdex2%E8%84%B1360%E5%8A%A0%E5%9B%BA%E7%9A%84%E5%A3%B3/">使用MuMu模拟器+Xposed+Fdex2脱360加固的壳</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">其他</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../HenCoder-5%E6%9C%9F-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">HenCoder-5期-学习笔记</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../MacOS%2010.10%20%E4%BB%A5%E4%B8%8A%E8%A7%A3%E5%86%B3%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB/">MacOS 10.10 以上解决机械键盘按键无法识别</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%20TensorFlow/">极客时间 TensorFlow</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">移动端音视频入门 FFmpeg(公司技术分享)</a>
+    <ul class="current">
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">simplepeng</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>其他 &raquo;</li><li>移动端音视频入门 FFmpeg(公司技术分享)</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/simplepeng/blog/edit/master/docs/其他/移动端音视频入门-FFmpeg(公司技术分享).md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h2 id="ffmpeg">什么是FFmpeg</h2>
+<p>github地址：<a href="https://github.com/FFmpeg/FFmpeg">https://github.com/FFmpeg/FFmpeg</a></p>
+<p>FFmpeg官网：<a href="https://ffmpeg.org/">https://ffmpeg.org/</a></p>
+<p><code>FFmpeg</code>是一套可以用来做音视频<code>采集</code>，<code>裁剪</code>,<code>转换</code>，<code>推流</code>等操作的<code>开源计算机程序</code>。采用LGPL或GPL许可证，它提供了录制、转换以及流化音视频的完整解决方案。</p>
+<p>国内耳熟能详的<code>暴风影音</code>、<code>QQ影音</code>，以及国外著名的<code>KMPlayer</code>、<code>PotPlayer</code>，都采用了FFmpeg的代码但却不按规矩开源，被放入了FFmpeg的耻辱名单当中。</p>
+<h2 id="ffmpeg_1">FFmpeg主要组成组件</h2>
+<ul>
+<li><code>ffmpeg</code>：一个命令行工具，用来对视频，音频文件执行<code>剪辑</code>，<code>转换格式</code>，<code>旋转</code>，<code>添加滤镜</code>等操作的指令集</li>
+<li><code>ffserver</code>：一个HTTP多媒体即时广播流服务器，支持回溯</li>
+<li><code>ffplay</code>：一个简单的播放器，基于SDL与FFmpeg库</li>
+<li><code>libavcodec</code>：包含全部FFmpeg音频/视频编解码库</li>
+<li><code>libavformat</code>：包含demuxers和muxer封装格式库</li>
+<li><code>libavutil</code>：ffmpeg一个工具库</li>
+<li><code>libavfilter</code>：加filter的库(这里翻译成滤镜不太严谨)</li>
+<li><code>libswscale</code>：对图像做转换比例(缩放)的库</li>
+<li><code>libavresample</code>：做重采样的库</li>
+<li><code>libavdevice</code>：使用这个库可以读取电脑（或者其他设备上）的多媒体设备的数据，或者输出数据到指定的多媒体设备上</li>
+</ul>
+<h2 id="ffmpeg_2">FFmpeg命令集的常用参数</h2>
+<p>FFmpeg可使用众多参数，参数内容会根据ffmpeg版本而有差异，使用前建议先参考参数及编解码器的叙述。</p>
+<p>也可以使用<code>ffmpeng -h</code>命令查看</p>
+<h3 id="_1">常用参数</h3>
+<ul>
+<li><code>-i</code>：设置输入源，可以是文件，也可以是网络流文件</li>
+<li><code>-f</code>：设置输出格式</li>
+<li><code>-y</code>：若输出文件已经存在就覆盖</li>
+<li><code>-fs</code>：超过指定的文件的持续时间就结束</li>
+<li><code>-ss</code>：从指定时间开始，一般格式为<code>00:00:00</code>，也可以是<code>多少秒</code></li>
+<li><code>-t</code>：指令的持续时间</li>
+<li><code>-title</code>：设置媒体文件的标题</li>
+<li><code>-c</code>：指定输出文件的编码</li>
+<li><code>-metadata</code>：更改输出文件的<code>元数据</code></li>
+</ul>
+<h3 id="_2">影像参数</h3>
+<ul>
+<li><code>-b:v</code>——设置影像流量，默认为200Kbit/秒。</li>
+<li><code>-r</code>——设置帧率值，默认为25。</li>
+<li><code>-s</code>——设置画面的宽与高。</li>
+<li><code>-aspect</code>——设置画面的比例。</li>
+<li><code>-vn</code>——不处理影像，于仅针对声音做处理时使用。</li>
+<li><code>-vcodec( -c:v )</code>——设置影像影像编解码器，未设置时则使用与输入文件相同之编解码器。</li>
+</ul>
+<h3 id="_3">声音参数</h3>
+<ul>
+<li><code>-b:a</code>——设置每个<code>Channel</code>的流量（chanel可以理解为声道数，左声道，右声道这种）</li>
+<li><code>-ar</code>——设置采样率。</li>
+<li><code>-ac</code>——设置声音的<code>Channel</code>数。</li>
+<li><code>-acodec ( -c:a )</code> ——设置声音编解码器，未设置时与影像相同，使用与输入文件相同之编解码器。</li>
+<li><code>-an</code>——不处理声音，于仅针对影像做处理时使用。</li>
+<li><code>-vol</code>——设置音量大小，256为标准音量。（要设置成两倍音量时则输入512，依此类推。）</li>
+</ul>
+<h2 id="_4">常用命令</h2>
+<h3 id="_5">查看媒体信息</h3>
+<pre><code class="language-shell">ffprobe xxx.xx
+ffmpeg -i xxx.xx
+</code></pre>
+<h3 id="_6">播放媒体文件</h3>
+<pre><code class="language-shell">ffplay xxxx.文件格式
+
+ffplay xxx.mp4
+</code></pre>
+<h3 id="_7">下载网络媒体到本地</h3>
+<pre><code class="language-shell">ffmpeg -i http://file.52lishi.com/file/yinxiao/ly-17-12-16-06.mp3 laosiji.aac
+</code></pre>
+<h3 id="_8">转换媒体格式</h3>
+<pre><code class="language-shell">ffmpeg -i 源媒体 输出媒体
+</code></pre>
+<pre><code class="language-shell">ffmpeg -i chailao.mp4 chailao.ts
+</code></pre>
+<p><code>.ts</code>：TS是 transport Stream的缩写通常称为码流文件, TS文件是最e原始的音频视频容器,没有经过其他算法的压缩所以一般会很大,这跟当时播放的源文件的情况,比如比特率什么的.</p>
+<h3 id="_9">裁剪媒体文件</h3>
+<pre><code class="language-shell">ffmpeg -i 源媒体 -ss 00:00:20 -t 10 -c copy 输出媒体
+</code></pre>
+<pre><code class="language-shell">ffmpeg -i chailao.mp4 -ss 00:02:08 -t 7 -c copy chailao_split.mp4
+</code></pre>
+<p><code>-c</code>：也就是<code>codec</code>(编码)，<code>copy</code>指定和源媒体使用同样的配置(元数据)</p>
+<h3 id="gif">视频转gif</h3>
+<pre><code class="language-shell">ffmpeg -i 源媒体 xxx.gif
+</code></pre>
+<pre><code class="language-shell">ffmpeg -i chailao_split.mp4 chailao.gif
+</code></pre>
+<p>这个跟上面的转换媒体格式其实是一个。</p>
+<h3 id="_10">从视频文件截取一帧转为图片</h3>
+<pre><code class="language-shell">ffmpeg -i 源媒体 -ss 开始时间 -s 宽x高 -vframes 帧数 -f image2 输出文件
+</code></pre>
+<pre><code class="language-shell">ffmpeg -i chailao.mp4 -ss 00:02:08 -s 300x300 -vframes 1 -f image2 frame.png
+</code></pre>
+<h3 id="gif_1">将一系列图片合成gif</h3>
+<pre><code class="language-shell">ffmpeg -i xxx_%d.png -r 帧数 xxx.gif
+</code></pre>
+<pre><code class="language-shell">ffmpeg -i frame%d.png -r 25 frame.gif
+</code></pre>
+<p><code>-f</code>：设置帧数</p>
+<h3 id="_11">分离视频音频流</h3>
+<pre><code class="language-shell">ffmpeg -i input_file -vcodec copy -an output_file_video    //分离出视频流
+ffmpeg -i input_file -acodec copy -vn output_file_audio    //分离出音频流
+</code></pre>
+<p><code>-an</code>：不要音频流</p>
+<p><code>-vn</code>：不要视频流</p>
+<pre><code class="language-shell">ffmpeg -i chailao.mp4 -vcodec copy -an chailao_without_audio.mp4
+ffmpeg -i chailao.mp4 -acodec copy -vn chailao_without_video.mp4
+</code></pre>
+<h3 id="_12">将视频和音频合并</h3>
+<pre><code class="language-shell">ffmpeg -i video_file -i audio_file -vcodec copy -acodec copy output_file
+</code></pre>
+<p><code>-vcodec</code>：视频编码器</p>
+<p><code>-acodec</code>：音频编码器</p>
+<pre><code class="language-shell">ffmpeg -i chailao_without_audio.mp4 -i chailao_without_video.mp4 -vcodec copy -acodec copy chailao_merge.mp4
+</code></pre>
+<h3 id="_13">音视频倒放</h3>
+<pre><code class="language-shell">//视频倒放
+ffmpeg -i input-file.mp4 -vf reverse output.mp4r
+</code></pre>
+<pre><code class="language-shell">//音视频都倒放
+ffmpeg -i input-file.mp4 -vf reverse -af areverse output.mp4
+</code></pre>
+<pre><code class="language-shell">ffmpeg -i chailao.mp4 -vf reverse reverse_video.mp4
+//
+ffmpeg -i chailao.mp4 -vf reverse -af areverse reverse_video_audio.mp4
+</code></pre>
+<h2 id="_14">音视频编解码流程</h2>
+<p><img alt="" src="../imgs/ffmpeg_flow.png" /></p>
+<h2 id="_15">常用结构体介绍</h2>
+<p><code>ffmpeg</code>源码是基于<code>c语言</code>写的，所以我们如果是不用调用命令，自己写代码实现相应的功能，了解其定义好的<code>结构体</code>至关重要。</p>
+<h3 id="avformatcontext">AVFormatContext</h3>
+<p><code>AVFormatContext</code>是音视频文件的一种抽象和封装，该结构体中包含了多路流：<code>音频流</code>、<code>视频流</code>、<code>字幕流等</code>,</p>
+<p>是FFmpeg中一个贯穿全局的数据结构，很多函数都要以它为参数。</p>
+<pre><code class="language-c">typedef struct AVFormatContext {
+    struct AVInputFormat *iformat; //输入容器格式,用于分流,通过avformat_open_input()设置
+    struct AVOutputFormat *oformat; //输出容器格式,用于混流,必须在avformat_write_header()调用前设置
+    AVIOContext *pb;  // I/O 上下文
+    unsigned int nb_streams; // 流的总数
+    AVStream **streams; //所有流的列表,由avformat_new_stream()创建新的流
+    int64_t duration; //流的时长
+    int64_t bit_rate; //流的比特率
+    int64_t probesize; //从指定容器格式的输入中读取最大数据的大小,要足够起播首帧画面
+    int64_t max_analyze_duration; //从指定容器格式的输入中读取的最大数据时长
+    enum AVCodecID video_codec_id; // 视频的codec_id
+    enum AVCodecID audio_codec_id; // 音频的codec_id
+    enum AVCodecID subtitle_codec_id; // 字幕的codec_id
+    unsigned int max_index_size; // 每条流的最大内存字节数
+    unsigned int max_picture_buffer; //从设备获取的实时帧缓冲的最大内存大小
+    AVDictionary *metadata; // 整个文件的元数据
+   .....
+}AVFormatContext;
+</code></pre>
+<h3 id="avinputformat">AVInputFormat</h3>
+<p>FFmpeg的解复用器对象，表示输入文件容器格式，一个文件容器格式对应一个AVInputFormat结构，在程序运行时有多个实例。</p>
+<h3 id="avcodeccontext">AVCodecContext</h3>
+<p>描述编解码器上下文的数据结构，包含众多编解码器需要的参数信息。</p>
+<h3 id="avcodec">AVCodec</h3>
+<p>存储编解码器信息的结构体。</p>
+<h3 id="avstream">AVStream</h3>
+<p>存储每一个视频/音频流信息的结构体，使用解复用器从容器中解析出不同的流，在FFmpeg中流的对象就是<code>AVStream</code>，保存在<code>AVFormatContext</code>的<code>streams</code>数组中。</p>
+<h3 id="avpacket">AVPacket</h3>
+<p><code>AVPacket</code>保存的是<code>解复用之后-还没解码之前</code>的数据（仍然是压缩后的数据）和关于这些数据的一些附加信息。</p>
+<h3 id="avframe">AVFrame</h3>
+<p>用来描述<code>解码后</code>的音视频数据，必须使用<code>av_frame_alloc</code>分配，<code>av_frame_free</code>释放。</p>
+<h2 id="_16">常用方法介绍</h2>
+<h3 id="av_register_all">av_register_all</h3>
+<p>初始化所有组件，只有调用了该函数，才能使用复用器和编解码器(<code>FFmpeg4.0</code>以上被废弃，不推荐使用，可以不调用)</p>
+<h3 id="avformat_alloc_context">avformat_alloc_context</h3>
+<p><code>AVFormatContext</code>结构体要用<code>avformat_alloc_context()</code>函数进行初始化，分配内存空间。</p>
+<h3 id="avformat_open_input">avformat_open_input</h3>
+<pre><code class="language-c">int avformat_open_input(AVFormatContext **ps, const char *url, AVInputFormat *fmt, AVDictionary **options);
+</code></pre>
+<p>打开一个文件，读取<code>header</code>，不会涉及打开解码器，与之对应的是<code>avformat_close_input()</code>函数关闭文件。如果打开文件成功，<code>AVFormatContext ps指针</code>就会在函数中初始化完成。</p>
+<h3 id="av_guess_format">av_guess_format</h3>
+<pre><code class="language-c">AVOutputFormat *av_guess_format(const char *short_name,
+                                const char *filename,
+                                const char *mime_type);
+</code></pre>
+<p>从所编译的ffmpeg库支持的<code>muxer库</code>中查找与<code>文件后缀名</code>有关联的容器类型。</p>
+<h3 id="avformat_new_stream">avformat_new_stream</h3>
+<pre><code class="language-c">AVStream *avformat_new_stream(AVFormatContext *s, const AVCodec *c);
+</code></pre>
+<p>在 <code>AVFormatContext</code>中创建新的<code>Stream</code> 流通道。</p>
+<h3 id="av_read_frame">av_read_frame</h3>
+<pre><code class="language-c">int av_read_frame(AVFormatContext *s, AVPacket *pkt);
+</code></pre>
+<p>读取<code>码流</code>中的若干音频帧或者1帧视频。</p>
+<h3 id="av_write_frame">av_write_frame</h3>
+<p>FFmpeg先调用<code>avformat_write_header()</code>函数写头部信息，中间循环调用<code>av_write_frame()</code>函数写入帧数据，最后调用<code>av_write_trailer()</code>写尾部信息标志一个编码操作完成。</p>
+<h2 id="_17">代码示例</h2>
+<pre><code class="language-c">/ffmpeg/doc/example/encode_video.c
+</code></pre>
+<pre><code class="language-shell"> /usr/local/opt/ffmpeg/includef'f
+
+ clang -g -o encode_video encode_video.c -I/usr/local/Cellar/ffmpeg/4.1.4_2/include `pkg-config --libs libavcodec libavutil`
+
+ ./encode_video encode.mp4 mpeg1video
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%20TensorFlow/" class="btn btn-neutral float-left" title="极客时间 TensorFlow"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/simplepeng/blog" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../%E6%9E%81%E5%AE%A2%E6%97%B6%E9%97%B4%20TensorFlow/" style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+  </span>
+</div>
+    <script>var base_url = '../..';</script>
+    <script src="../../js/theme_extra.js" defer></script>
+    <script src="../../js/theme.js" defer></script>
+      <script src="../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
