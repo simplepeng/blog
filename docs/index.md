@@ -1,17 +1,17 @@
-# Welcome to MkDocs
+# 摘要
 
-For full documentation visit [mkdocs.org](https://www.mkdocs.org).
+simplepeng的独立博客站点，随缘记录。
 
-## Commands
+## 关于作者
 
-* `mkdocs new [dir-name]` - Create a new project.
-* `mkdocs serve` - Start the live-reloading docs server.
-* `mkdocs build` - Build the documentation site.
-* `mkdocs -h` - Print help message and exit.
+[https://github.com/simplepeng](https://github.com/simplepeng)
 
-## Project layout
+## 小额赞助
 
-    mkdocs.yml    # The configuration file.
-    docs/
-        index.md  # The documentation homepage.
-        ...       # Other markdown pages, images and other files.
+[萌戳链接](https://simplepeng.github.io/merge_pay_code/)
+
+## 其他链接
+
+[个人主页](https://simplepeng.github.io/)
+
+[学习笔记](https://simplepeng.github.io/KeepLearning/)
