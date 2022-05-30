@@ -5,14 +5,14 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../img/favicon.ico" />
-    <title>使用Gradle和Kotlin组织Android的资源文件 - simplepeng</title>
+    <title>[译]使用Gradle和Kotlin组织Android的资源文件 - simplepeng</title>
     <link rel="stylesheet" href="../../css/theme.css" />
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "\u4f7f\u7528Gradle\u548cKotlin\u7ec4\u7ec7Android\u7684\u8d44\u6e90\u6587\u4ef6";
+        var mkdocs_page_name = "[\u8bd1]\u4f7f\u7528Gradle\u548cKotlin\u7ec4\u7ec7Android\u7684\u8d44\u6e90\u6587\u4ef6";
         var mkdocs_page_input_path = "android/\u4f7f\u7528Gradle\u548cKotlin\u7ec4\u7ec7Android\u7684\u8d44\u6e90\u6587\u4ef6.md";
         var mkdocs_page_url = null;
       </script>
@@ -88,7 +88,7 @@
                   </li>
                   <li class="toctree-l1"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Android%20Support%20Annotations%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/">使用Android Support Annotations优化你的代码</a>
                   </li>
-                  <li class="toctree-l1 current"><a class="reference internal current" href="./">使用Gradle和Kotlin组织Android的资源文件</a>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="./">[译]使用Gradle和Kotlin组织Android的资源文件</a>
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#_1">目录</a>
     </li>
@@ -188,7 +188,7 @@
         <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
     <li><a href="../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
-          <li>Android &raquo;</li><li>使用Gradle和Kotlin组织Android的资源文件</li>
+          <li>Android &raquo;</li><li>[译]使用Gradle和Kotlin组织Android的资源文件</li>
     <li class="wy-breadcrumbs-aside">
         <a href="https://github.com/simplepeng/blog/edit/master/docs/android/使用Gradle和Kotlin组织Android的资源文件.md"
           class="icon icon-github"> Edit on GitHub</a>
@@ -200,7 +200,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="gradlekotlinandroid">使用Gradle和Kotlin组织Android的资源文件</h1>
+                <h1 id="gradlekotlinandroid">[译]使用Gradle和Kotlin组织Android的资源文件</h1>
 <p>如果您已经开发了3年或4年的App应用程序，那么您可能会注意到资源文件夹是如何变得混乱不堪的。尽管大多数开发人员会专注于组织他们的Java / Kotlin文件（通过功能或屏幕），但资源文件通常无人看管。</p>
 <p>尝试减少混乱的一个尝试是使用文件的命名约定。例如，在一些使用的布局文件中：</p>
 <ul>
