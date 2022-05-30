@@ -24,7 +24,7 @@
 3. 调用`surfaceHolder`的`lockCanvas()`
 
 	```java
-SurfaceView surfaceView = new SurfaceView(this);
+	SurfaceView surfaceView = new SurfaceView(this);
 	SurfaceHolder surfaceHolder = surfaceView.getHolder();
 	//获取
 	Canvas c = surfaceHolder.lockCanvas();

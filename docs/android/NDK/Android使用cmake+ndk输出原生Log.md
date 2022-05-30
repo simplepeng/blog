@@ -12,7 +12,7 @@
 
 生成好的项目会在**main**目录下创建好**cpp**目录和相应的cpp文件，以及**CmakeLists**文件
 
-![](https://ws1.sinaimg.cn/mw690/00677ch9gy1fu96plq7aij30b40h8jsz)
+![](../imgs/ndk_log_1.awebp)
 
 ### CmakeLists
 
@@ -144,7 +144,7 @@ Java_com_simple_nativelogdemo_MainActivity_stringFromJNI(
 
 ### 输出
 
-![](https://ws1.sinaimg.cn/mw690/00677ch9gy1fu97t6pz7pj30s802rgmj)
+![](../imgs/ndk_log_2.awebp)
 
 ## log.h头文件分析
 

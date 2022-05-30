@@ -2,7 +2,7 @@
 
 我浏览material.io网站时，从所谓的“Material Design 2”中找到一些新的组件，并发现Snackbar已经改变了，它不再占用整个屏幕长度，并且周围会有一个间距。
 
-![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ft4v3r6yb3j30ke0i6qne)
+![](imgs/custom_snack_bar_1.awebp)
 
 但我并没有从Support Library的alpha版本中找到它，所以我决定自己实现一下。
 
@@ -58,4 +58,4 @@ public void showSnackbar(View view) {
 
 ## 4、展示
 
-![](https://ws1.sinaimg.cn/mw690/00677ch9gy1ft4uvpwhpzj30j404kdfw)
+![](imgs/custom_snack_bar_2.awebp)

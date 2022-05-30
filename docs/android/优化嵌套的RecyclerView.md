@@ -4,7 +4,7 @@ RecyclerView是ListView的更高级版本，它重用相同的视图以防止额
 
 有时我们需要嵌套RecyclerView来创建一些布局。考虑在垂直方向RecyclerView内部有水平RecyclerView的情况。
 
-![](http://p6uvwa6u4.bkt.clouddn.com/img/1_GaK-wOYjrrVSA_vKOof-Aw.jpeg)
+![](imgs/opt_nest_recyclerview.awebp)
 
 在上图可以看到一个可以水平滚动的垂直RecyclerView，这是通过在另一个recyclerView中放置recyclerView来实现的。
 

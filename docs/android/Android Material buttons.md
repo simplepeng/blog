@@ -4,7 +4,7 @@
 
  [Google Material Design](https://material.google.com/components/buttons.html) 的文档中提到：“当按钮被触摸时应该给与用户相应的反馈”，现在有了**compat**支持库实现这种效果将会非常简单。
 
-![](http://p6uvwa6u4.bkt.clouddn.com/img/1_Dj3YxY5_isjWAvBsNx1Kvw.gif)
+![](imgs/android_material_buttons_1.awebp)
 
 ## 添加资源
 

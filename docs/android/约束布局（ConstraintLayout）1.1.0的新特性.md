@@ -6,7 +6,7 @@
 
 当一个View需要根据另一个View进行定位时，该角度和距离是从两个视图的中心点测量的。就像以某种角度和距离围绕行星旋转的卫星。
 
-![circular positon](http://p6uvwa6u4.bkt.clouddn.com/img/1_GzLnKniwl1dbhNA2J5WyzQ.png)
+![circular positon](imgs/constraint_layout_circular_position.awebp)
 
 被约束的View可以对齐到相对于其中心View的任何角度和半径
 
@@ -37,7 +37,7 @@
 
 它能够在运行时根据指定端可用视图的最大宽度创建导线（guideline）。这意味着视图的宽度减小或增加导线会自动移动以与视图的宽度保持一致。屏障与具有最大宽度的视图保持一致，该视图与被引用的视图组中的视图具有最大宽度。
 
-![](http://p6uvwa6u4.bkt.clouddn.com/img/1_rHW1BKt1jLHorT9JSxc7tg.png)
+![](imgs/contrain_layout_barrier.awebp)
 
 屏障可以设置为开始，结束，顶部，底部 - 这里蓝色框始终保留在屏障的右侧，根据灰色框中的最大宽度计算屏障指引。
 
@@ -137,7 +137,7 @@
 
 来解决，它所做的是强制约束，并让视图宽度/高度保持为包裹内容
 
-![](http://p6uvwa6u4.bkt.clouddn.com/img/1_JGnz4r7tn1RwC4ZDw3WTtQ.png)
+![](imgs/constrain_layout_dimension_constraints.awebp)
 
 ```xml
 <Button
