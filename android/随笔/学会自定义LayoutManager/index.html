@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="simplepeng" /><link rel="canonical" href="http://simplepeng.com/blog/android/%E9%9A%8F%E7%AC%94/%E5%AD%A6%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>看完这篇文章你还不会自定义LayoutManager？ - simplepeng</title>
+    <title>学会自定义LayoutManager - blog</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "\u770b\u5b8c\u8fd9\u7bc7\u6587\u7ae0\u4f60\u8fd8\u4e0d\u4f1a\u81ea\u5b9a\u4e49LayoutManager\uff1f";
-        var mkdocs_page_input_path = "android/\u968f\u7b14/\u770b\u5b8c\u8fd9\u7bc7\u6587\u7ae0\u4f60\u8fd8\u4e0d\u4f1a\u81ea\u5b9a\u4e49LayoutManager\uff1f.md";
-        var mkdocs_page_url = null;
+        var mkdocs_page_name = "\u5b66\u4f1a\u81ea\u5b9a\u4e49LayoutManager";
+        var mkdocs_page_input_path = "android/\u968f\u7b14/\u5b66\u4f1a\u81ea\u5b9a\u4e49LayoutManager.md";
+        var mkdocs_page_url = "/blog/android/%E9%9A%8F%E7%AC%94/%E5%AD%A6%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager/";
       </script>
     
     <script src="../../../js/jquery-3.6.0.min.js" defer></script>
@@ -22,6 +22,7 @@
       <script src="../../../js/html5shiv.min.js"></script>
     <![endif]-->
       <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/languages/kotlin.min.js"></script>
       <script>hljs.initHighlightingOnLoad();</script> 
 </head>
 
@@ -31,7 +32,7 @@
     <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
     <div class="wy-side-scroll">
       <div class="wy-side-nav-search">
-          <a href="../../.." class="icon icon-home"> simplepeng
+          <a href="../../.." class="icon icon-home"> blog
         </a><div role="search">
   <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
       <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
@@ -41,7 +42,7 @@
 
       <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
               <ul>
-                <li class="toctree-l1"><a class="reference internal" href="../../..">摘要</a>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">主页</a>
                 </li>
               </ul>
               <p class="caption"><span class="caption-text">Android</span></p>
@@ -122,6 +123,8 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ManifestPlaceholders%E7%9A%84%E5%A6%99%E7%94%A8/">ManifestPlaceholders的妙用</a>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../MaxLineLayoutManager/">MaxLineLayoutManager</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../PopupMenu%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">PopupMenu简单使用</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../RxJava%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E7%AC%A6/">RxJava常用操作符</a>
@@ -130,25 +133,19 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ViewPagerTransforms%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/">ViewPagerTransforms的深入理解</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%5B%E8%AF%91%5D%E4%BB%8EJava%E5%88%87%E6%8D%A2%E5%88%B0Kotlin/">[译]从Java切换到Kotlin</a>
+                <li class="toctree-l2"><a class="reference internal" href="../%5B%E8%AF%91%5D%E4%BB%8EJava%E5%88%87%E6%8D%A2%E5%88%B0Kotlin%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">[译]从Java切换到Kotlin的新特性</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E4%BC%98%E5%8C%96%E5%B5%8C%E5%A5%97%E7%9A%84RecyclerView/">[译]优化嵌套的RecyclerView</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/">[译]使用Gradle和Kotlin组织Android的资源文件</a>
+                <li class="toctree-l2"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/">使用Gradle和Kotlin组织资源文件</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Parcelize%E6%B3%A8%E8%A7%A3%E7%AE%80%E5%8C%96Parcelable/">使用Parcelize注解简化Parcelable</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Support%E6%B3%A8%E8%A7%A3%E5%8C%85%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91/">使用Support注解包优化代码逻辑</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">在Activity的onCreate方法中调用finish的生命周期</a>
+                <li class="toctree-l2"><a class="reference internal" href="../%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">Activity的onCreate中调用finish的生命周期</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E5%BD%93item%E8%B6%85%E8%BF%87%E4%B8%80%E5%AE%9A%E6%95%B0%E9%87%8F%EF%BC%8C%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AE%BE%E7%BD%AERecyclerView%E7%9A%84maxHeight/">当item超过一定数量，如何正确的设置RecyclerView的maxHeight</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/">无障碍服务研究</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/">Kotlin封装RecyclerView的Adapter</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">看完这篇文章你还不会自定义LayoutManager？</a>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">学会自定义LayoutManager</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#layoutmanager_1">一些自定义LayoutManager优秀文章推荐</a>
     </li>
@@ -210,6 +207,10 @@
     </li>
     </ul>
                 </li>
+                <li class="toctree-l2"><a class="reference internal" href="../%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/">无障碍服务研究</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/">Kotlin封装RecyclerView的Adapter</a>
+                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/">自定义SnackBar</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7%E5%99%A8/">自定义全局异常捕获器</a>
@@ -233,7 +234,7 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
       <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
           <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../..">simplepeng</a>
+          <a href="../../..">blog</a>
         
       </nav>
       <div class="wy-nav-content">
@@ -241,9 +242,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Android &raquo;</li>
-          <li>随笔 &raquo;</li><li>看完这篇文章你还不会自定义LayoutManager？</li>
+          <li>随笔 &raquo;</li><li>学会自定义LayoutManager</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/随笔/看完这篇文章你还不会自定义LayoutManager？.md"
+        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/随笔/学会自定义LayoutManager.md"
           class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
@@ -253,7 +254,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="layoutmanager">看完这篇文章你还不会自定义LayoutManager？</h1>
+                <h1 id="layoutmanager">学会自定义LayoutManager</h1>
 <p>最开始我在学习自定义LayoutManager的时候，也是网上搜文章，看博客，以及一些公众号的推文。刚开始看的时候觉得还是那么回事，但是在慢慢的深入LayoutManager源码才发现很多的文章其实都是不合格，乃至可以说是很误导人的，所以我才想自己写一篇关于自定义LayoutManager的文章，希望能帮助到一部分人能入门自定义LayoutManager吧。</p>
 <h2 id="layoutmanager_1">一些自定义LayoutManager优秀文章推荐</h2>
 <p>前面虽然说有很多博客是不合格的，但是同样还是有一些优秀的作者的博客对在下启发很大，特别是<strong>Dave</strong>大神<code>building-a-recyclerview-layoutmanager-part</code>的系列的文章，真的是讲得不能再棒了！虽然已经是14年的文章，但是放在当下来看，依然是自定义LayoutManager相关文章的顶峰，虽然文章是英文，但是还是强烈推荐阅读！</p>
@@ -1027,8 +1028,8 @@ return PointF(direction.toFloat(), 0f)
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/" class="btn btn-neutral float-left" title="Kotlin封装RecyclerView的Adapter"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/" class="btn btn-neutral float-right" title="自定义SnackBar">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" class="btn btn-neutral float-left" title="Activity的onCreate中调用finish的生命周期"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/" class="btn btn-neutral float-right" title="无障碍服务研究">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -1055,10 +1056,10 @@ return PointF(direction.toFloat(), 0f)
         </span>
     
     
-      <span><a href="../%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
@@ -1068,7 +1069,7 @@ return PointF(direction.toFloat(), 0f)
       <script src="../../../search/main.js" defer></script>
     <script defer>
         window.onload = function () {
-            SphinxRtdTheme.Navigation.enable(true);
+            SphinxRtdTheme.Navigation.enable(false);
         };
     </script>
 
