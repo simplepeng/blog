@@ -1,7 +1,5 @@
 # 给已有项目添加JNI/CMake支持
 
-## 添加`CMakeLists.txt`文件
-
 在项目根目录添加`CMakeLists.txt`(其他路径也可)
 
 ```cmake
@@ -27,8 +25,6 @@ target_link_libraries(
         hello_jni
         ${log-lib})
 ```
-
-## 添加`native`原生代码
 
 在`src/main/`目录下添加`c/cpp`原生代码的目录，名称随意，一般可以为`jni/cpp`
 

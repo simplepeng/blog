@@ -1,7 +1,3 @@
-```
- access the current theme, resources, etc.
-```
-
 # 自定义View的构造方法解析
 
 本文分析基于`android sdk api-29`
@@ -10,32 +6,32 @@
 
 ```java
 /**
-     * Simple constructor to use when creating a view from code
-     * 当直接使用代码创建View时使用
-     */
-    public CustomView(Context context) {
-        super(context);
-    }
+ * Simple constructor to use when creating a view from code
+ * 当直接使用代码创建View时使用
+ */
+public CustomView(Context context) {
+    super(context);
+}
 
-    /**
-     * Constructor that is called when inflating a view from XML
-     * The method onFinishInflate() will be called after all children have been
-     */
-    public CustomView(Context context, @Nullable AttributeSet attrs) {
-        super(context, attrs);
-    }
+/**
+ * Constructor that is called when inflating a view from XML
+ * The method onFinishInflate() will be called after all children have been
+ */
+public CustomView(Context context, @Nullable AttributeSet attrs) {
+    super(context, attrs);
+}
 
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
-        super(context, attrs, defStyleAttr);
-    }
+public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr) {
+    super(context, attrs, defStyleAttr);
+}
 
-    /**
-     * Api21新增的方法
-     */
-    @RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
-    public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
-        super(context, attrs, defStyleAttr, defStyleRes);
-    }
+/**
+ * Api21新增的方法
+ */
+@RequiresApi(api = Build.VERSION_CODES.LOLLIPOP)
+public CustomView(Context context, @Nullable AttributeSet attrs, int defStyleAttr, int defStyleRes) {
+    super(context, attrs, defStyleAttr, defStyleRes);
+}
 ```
 
 * 只有一个`Context`的用于代码创建View的使用

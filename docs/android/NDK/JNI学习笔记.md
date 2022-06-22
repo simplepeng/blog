@@ -51,8 +51,8 @@ jmethodID id = env->GetMethodID(clazz, "paramMethod", "(I)V");
 多个参数不需要用符号隔开，直接顺序写签名类型
 
 ```java
-  public me.simple.example_ndk_cmake.Test(int, java.lang.String);
-    descriptor: (ILjava/lang/String;)V
+public me.simple.example_ndk_cmake.Test(int, java.lang.String);
+  descriptor: (ILjava/lang/String;)V
 ```
 
 ### 基础类型
@@ -170,43 +170,43 @@ Java_me_simple_example_1ndk_1cmake_MainActivity_native_1callJavaFiled(
 ### JNI访问Java类的静态变量
 
 ```c
-		//根据类路径找到类对象
-    jclass jclass1 = (*env)->FindClass(env, class_name);
-    //获取static变量字段的id
-    const char *filed = "b";
-    const char *sign = "Ljava/lang/String;";
-    jfieldID jfieldId = (*env)->GetStaticFieldID(env, jclass1, filed, sign);
-    //获取staic字段的值
-    jstring jstring1 = (jstring) (*env)->GetStaticObjectField(env, jclass1, jfieldId);
-    //jstring转换为字符指针
-    const char *filed_string = (*env)->GetStringUTFChars(env, jstring1, 0);
-    log_d("get string filed == %s", filed_string)
+//根据类路径找到类对象
+jclass jclass1 = (*env)->FindClass(env, class_name);
+//获取static变量字段的id
+const char *filed = "b";
+const char *sign = "Ljava/lang/String;";
+jfieldID jfieldId = (*env)->GetStaticFieldID(env, jclass1, filed, sign);
+//获取staic字段的值
+jstring jstring1 = (jstring) (*env)->GetStaticObjectField(env, jclass1, jfieldId);
+//jstring转换为字符指针
+const char *filed_string = (*env)->GetStringUTFChars(env, jstring1, 0);
+log_d("get string filed == %s", filed_string)
 ```
 
 ### JNI调用Java类的方法
 
 ```c
-    const char *class_name = "me/simple/example_ndk_cmake/Test";
-    //根据类路径找到类对象
-    jclass jclazz = (*env)->FindClass(env, class_name);
-    //jclass jclazz = (*env)->GetObjectClass(env, this);
-    //获取类的空参构造方法
-    const char *construct_method = "<init>";
-    jmethodID construct = (*env)->GetMethodID(env, jclazz, construct_method, "()V");
-    //创建该类的实例
-    jobject jobject1 = (*env)->NewObject(env, jclazz, construct);
-    //找到要调用的方法id
-    const char *method = "log";
-    const char *sign = "(Ljava/lang/String;)V";
-    jmethodID jmethodId = (*env)->GetMethodID(env, jclazz, method, sign);
-    //调用改类的方法
-    const char *message = "method called by c";
-    jstring jstring1 = (*env)->NewStringUTF(env, message);
-    (*env)->CallVoidMethod(env, jobject1, jmethodId, jstring1);
-    //释放引用
-    (*env)->DeleteLocalRef(env, jclazz);
-    (*env)->DeleteLocalRef(env, jobject1);
-    (*env)->DeleteLocalRef(env, jstring1);
+const char *class_name = "me/simple/example_ndk_cmake/Test";
+//根据类路径找到类对象
+jclass jclazz = (*env)->FindClass(env, class_name);
+//jclass jclazz = (*env)->GetObjectClass(env, this);
+//获取类的空参构造方法
+const char *construct_method = "<init>";
+jmethodID construct = (*env)->GetMethodID(env, jclazz, construct_method, "()V");
+//创建该类的实例
+jobject jobject1 = (*env)->NewObject(env, jclazz, construct);
+//找到要调用的方法id
+const char *method = "log";
+const char *sign = "(Ljava/lang/String;)V";
+jmethodID jmethodId = (*env)->GetMethodID(env, jclazz, method, sign);
+//调用改类的方法
+const char *message = "method called by c";
+jstring jstring1 = (*env)->NewStringUTF(env, message);
+(*env)->CallVoidMethod(env, jobject1, jmethodId, jstring1);
+//释放引用
+(*env)->DeleteLocalRef(env, jclazz);
+(*env)->DeleteLocalRef(env, jobject1);
+(*env)->DeleteLocalRef(env, jstring1);
 ```
 
 ### JNI调用Java类的静态方法
@@ -314,7 +314,12 @@ jobject createBitmap(JNIEnv *env,
 }
 ```
 
-## 静态注册
+##  Native函数注册方式
+
+* 静态注册
+* 动态注册
+
+### 静态注册
 
 ```c
 
@@ -326,7 +331,7 @@ Java_me_simple_example_1ndk_1cmake_MainActivity_native_1callJavaFiled(JNIEnv *en
 
 包名+类名+方法名，用`_`分开。
 
-## 动态注册
+### 动态注册
 
 ```java
 public class MainActivity extends AppCompatActivity {
@@ -394,7 +399,7 @@ JNIEXPORT jint JNI_OnLoad(JavaVM *vm, void *reserved) {
 }
 ```
 
-## log输出
+## 输出LOG
 
 ```c
 #include <android/log.h>
