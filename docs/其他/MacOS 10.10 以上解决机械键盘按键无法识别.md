@@ -1,4 +1,4 @@
-# MacOS 10.10 以上解决机械键盘按键无法识别
+# MacOS-10.10以上--解决机械键盘按键无法识别
 
 题主的配置是 MacBook Pro ，系统10.13，机械键盘高斯87
 
@@ -6,13 +6,13 @@
 
 直到我发现GitHub有一个开源项目好像可以解决这个问题，先放出github的仓库地址
 
-[](https://github.com/thefloweringash/iousbhiddriver-descriptor-override)
+[iousbhiddriver-descriptor-override](https://github.com/thefloweringash/iousbhiddriver-descriptor-override)
 
 但是我按照文档中的步骤安装了驱动，并且在**/System/Library/Extensions**目录下也找到了相应的驱动文件，但是上面那个几键按了还是没有反应，李时珍的皮啊！！！
 
 然后又继续在该项目的issue中找寻答案，这还真的找到了，天不亡我啊！
 
-[](https://github.com/thefloweringash/iousbhiddriver-descriptor-override/issues/22)
+[issues](https://github.com/thefloweringash/iousbhiddriver-descriptor-override/issues/22)
 
 文中的大概意思就是要禁用掉[System Integrity Protection](http://arstechnica.com/apple/2015/09/os-x-10-11-el-capitan-the-ars-technica-review/8/)(SIP-系统完整性保证)，好了，接下来就是详细步骤了。
 
@@ -25,7 +25,7 @@
 
 ## 安装Noppoo的兼容驱动
 
-[](http://thefloweringash.github.io/iousbhiddriver-descriptor-override/)
+[iousbhiddriver-descriptor-override](http://thefloweringash.github.io/iousbhiddriver-descriptor-override/)
 
 到上面网站下载最新驱动的pkg文件，然后安装重启即可。
 
