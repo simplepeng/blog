@@ -1,4 +1,4 @@
-# 探索Android架构模式中ViewModel
+# Android架构组件—ViewModel
 
 ## 前言
 

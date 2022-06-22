@@ -1,4 +1,4 @@
-# Android架构组件—LiveData
+# Android架构组件-LiveData
 
 ## 前言
 

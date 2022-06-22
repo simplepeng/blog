@@ -1,4 +1,4 @@
-# FFmpeg获取视频首帧转封面图Bitmap
+# 获取视频首帧转Bitmap封面图
 
 这是学习ffmpeg的第二篇博客，主要是使用ffmpeg获取本地视频文件的第一帧数据转换为Bitmap，然后抛给上层ImageView显示。
 
@@ -29,14 +29,14 @@ Java_demo_simple_example_1ffmpeg_MainActivity_getCover(JNIEnv *env,
 ## 打开视频文件，解封装
 
 ```c++
-		//封装格式上下文    
-		AVFormatContext *ifmt_ctx = NULL;
-		//打开输入源
-    ret = avformat_open_input(&ifmt_ctx, _path, 0, 0);
-    if (ret < 0) {
-        logDebug("解封装失败 -- %s", av_err2str(ret));
-        return nullptr;
-    }
+//封装格式上下文    
+AVFormatContext *ifmt_ctx = NULL;
+//打开输入源
+ret = avformat_open_input(&ifmt_ctx, _path, 0, 0);
+if (ret < 0) {
+    logDebug("解封装失败 -- %s", av_err2str(ret));
+    return nullptr;
+}
 ```
 
 使用`avformat_open_input()`函数从输入文件中找到格式化I/O上下文`AVFormatContext`结构体，如果是编码要新建`AVFormatContext`要使用`avformat_alloc_context() `函数。
@@ -48,18 +48,18 @@ Java_demo_simple_example_1ffmpeg_MainActivity_getCover(JNIEnv *env,
 ## 找到流，从流的数组中找到视频流
 
 ```c++
-    ret = avformat_find_stream_info(ifmt_ctx, 0);
-    int video_stream_index = -1;
-    AVStream *pStream = NULL;
-    AVCodecParameters *codecpar = NULL;
-    //找出视频流
-    for (int i = 0; i < ifmt_ctx->nb_streams; ++i) {
-        pStream = ifmt_ctx->streams[i];
-        if (pStream->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
-            codecpar = pStream->codecpar;
-            video_stream_index = i;
-        }
+ret = avformat_find_stream_info(ifmt_ctx, 0);
+int video_stream_index = -1;
+AVStream *pStream = NULL;
+AVCodecParameters *codecpar = NULL;
+//找出视频流
+for (int i = 0; i < ifmt_ctx->nb_streams; ++i) {
+    pStream = ifmt_ctx->streams[i];
+    if (pStream->codecpar->codec_type == AVMEDIA_TYPE_VIDEO) {
+        codecpar = pStream->codecpar;
+        video_stream_index = i;
     }
+}
 ```
 
 `avformat_find_stream_info()`函数从媒体文件的数据包中获取流信息赋值给`AVFormatContext`。
@@ -72,37 +72,37 @@ Java_demo_simple_example_1ffmpeg_MainActivity_getCover(JNIEnv *env,
 
 ```c++
 //找到最合适的流
-    int stream_index = av_find_best_stream(ifmt_ctx, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
+int stream_index = av_find_best_stream(ifmt_ctx, AVMEDIA_TYPE_VIDEO, -1, -1, NULL, 0);
 ```
 
 ## 找到解码器，申请编解码器上下文
 
 ```c++
-    logDebug("解码器 == %s", avcodec_get_name(codecpar->codec_id));
-    AVCodec *codec = avcodec_find_decoder(codecpar->codec_id);
-    //申请编解码器上下文
-    AVCodecContext *codec_ctx = avcodec_alloc_context3(codec);
+logDebug("解码器 == %s", avcodec_get_name(codecpar->codec_id));
+AVCodec *codec = avcodec_find_decoder(codecpar->codec_id);
+//申请编解码器上下文
+AVCodecContext *codec_ctx = avcodec_alloc_context3(codec);
 ```
 
 ## 打开编解码器，获取首帧
 
 ```c++
-    //拷贝parameters 到 编解码器的context
-		ret = avcodec_parameters_to_context(codec_ctx, codecpar);
-    //打开编解码器
-    ret = avcodec_open2(codec_ctx, codec, NULL);
-    //申请一个帧结构体
-    AVFrame *pFrame = av_frame_alloc();
+//拷贝parameters 到 编解码器的context
+ret = avcodec_parameters_to_context(codec_ctx, codecpar);
+//打开编解码器
+ret = avcodec_open2(codec_ctx, codec, NULL);
+//申请一个帧结构体
+AVFrame *pFrame = av_frame_alloc();
 
- 		int frameFinished;
-    while (av_read_frame(ifmt_ctx, &pkg) >= 0) {
-        if (pkg.stream_index != video_stream_index) {
-            continue;
-        }
-        ret = avcodec_decode_video2(codec_ctx, pFrame, &frameFinished, &pkg);
-        if (!frameFinished)
-            continue;
+int frameFinished;
+while (av_read_frame(ifmt_ctx, &pkg) >= 0) {
+    if (pkg.stream_index != video_stream_index) {
+        continue;
     }
+    ret = avcodec_decode_video2(codec_ctx, pFrame, &frameFinished, &pkg);
+    if (!frameFinished)
+        continue;
+}
 ```
 
 `av_read_frame()`函数读取视频流信息，并将其存放到 AVPacket 结构的 pkt 变量中，这里我们只需分配 AVPacket 结构体的内存，数据`（pkt->data）`的数据则由 FFmpeg 在其内部自动分配，不过使用完毕后，要调用` av_packet_unref()`函数释放。
@@ -149,19 +149,19 @@ jobject createBitmap(JNIEnv *env,
 先使用`bitmap.h`头文件中`AndroidBitmap_lockPixels()`的函数绑定像素指针的地址，使用libyuv中的`I420ToABGR()`函数将`yuv420p`转换为`argb`，记得最后使用`AndroidBitmap_unlockPixels()`函数回收Bitmap。
 
 ```c++
-    jobject bmp;
-    bmp = createBitmap(env, codec_ctx->width, codec_ctx->height);
-		
-		void *addr_pixels;
-    ret = AndroidBitmap_lockPixels(env, bmp, &addr_pixels);
+jobject bmp;
+bmp = createBitmap(env, codec_ctx->width, codec_ctx->height);
 
-    //yuv420p to argb
-    int linesize = pFrame->width * 4;
-    libyuv::I420ToABGR(pFrame->data[0], pFrame->linesize[0], // Y
-                       pFrame->data[1], pFrame->linesize[1], // U
-                       pFrame->data[2], pFrame->linesize[2], // V
-                       (uint8_t *) addr_pixels, linesize,  // RGBA
-                       pFrame->width, pFrame->height);
+void *addr_pixels;
+ret = AndroidBitmap_lockPixels(env, bmp, &addr_pixels);
+
+//yuv420p to argb
+int linesize = pFrame->width * 4;
+libyuv::I420ToABGR(pFrame->data[0], pFrame->linesize[0], // Y
+                   pFrame->data[1], pFrame->linesize[1], // U
+                   pFrame->data[2], pFrame->linesize[2], // V
+                   (uint8_t *) addr_pixels, linesize,  // RGBA
+                   pFrame->width, pFrame->height);
 ```
 
 上面的`lineSize`计算规则为：一个像素点有4个字节，所以要宽度x4
@@ -171,28 +171,28 @@ Yuv420p转ARGB的函数名是`I420ToABGR`，并不是`I420ToARGB`。我坑，之
 ## 释放资源
 
 ```c++
-    av_packet_unref(&pkg);
-    AndroidBitmap_unlockPixels(env, bmp);
-    av_free(pFrame);
-    avcodec_close(codec_ctx);
-    avformat_close_input(&ifmt_ctx);
-    env->ReleaseStringUTFChars(path, _path);
+av_packet_unref(&pkg);
+AndroidBitmap_unlockPixels(env, bmp);
+av_free(pFrame);
+avcodec_close(codec_ctx);
+avformat_close_input(&ifmt_ctx);
+env->ReleaseStringUTFChars(path, _path);
 ```
 
 ## Activity中的代码
 
 ```java
-        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
-                + "get_cover.mp4";
-        Bitmap bitmap = getCover(path);
+ String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
+         + "get_cover.mp4";
+ Bitmap bitmap = getCover(path);
 
-        Log.d(TAG, "bitmap width == " + bitmap.getWidth());
-        Log.d(TAG, "bitmap height == " + bitmap.getHeight());
-        Log.d(TAG, "bitmap config == " + bitmap.getConfig().name());
-        Log.d(TAG, "bitmap byteCount == " + bitmap.getByteCount());
+ Log.d(TAG, "bitmap width == " + bitmap.getWidth());
+ Log.d(TAG, "bitmap height == " + bitmap.getHeight());
+ Log.d(TAG, "bitmap config == " + bitmap.getConfig().name());
+ Log.d(TAG, "bitmap byteCount == " + bitmap.getByteCount());
 
-        ImageView ivCover = findViewById(R.id.ivCover);
-        ivCover.setImageBitmap(bitmap);
+ ImageView ivCover = findViewById(R.id.ivCover);
+ ivCover.setImageBitmap(bitmap);
 ```
 
 ## Log输出和界面显示
@@ -209,4 +209,4 @@ Yuv420p转ARGB的函数名是`I420ToABGR`，并不是`I420ToARGB`。我坑，之
 
 ## 完整代码
 
-https://github.com/simplepeng/AndroidExamples/tree/master/example_ffmpeg
+[example_ffmpeg](https://github.com/simplepeng/AndroidExamples/tree/master/example_ffmpeg)

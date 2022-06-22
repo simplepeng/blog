@@ -1,17 +1,12 @@
-# Android架构组件Room的使用
+# Android架构组件-Room
 
 Room其实就是一个orm，抽象了SQLite的使用，但是它作为Android的亲儿子orm，并且原生支持LiveData和Rxjava嵌套使用，学习一下还是不错的。
-
-
 
 Room有3个主要组件
 
 * Database ：数据库
 * Entity : 代表数据库一个表结构
 * Dao : 包含访问数据库的方法
-
-
-
 
 ## 简单使用
 
