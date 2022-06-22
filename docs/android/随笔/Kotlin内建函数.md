@@ -1,4 +1,4 @@
-# Kotlin内建函数let,apply,also,with,run.md
+# Kotlin内建函数
 
 ## let
 

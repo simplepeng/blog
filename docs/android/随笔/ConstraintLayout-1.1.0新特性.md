@@ -1,4 +1,4 @@
-# 约束布局（ConstraintLayout）1.1.0的新特性
+# ConstraintLayout-1.1.0新特性
 
 约束布局无疑是最适合构建响应式用户界面的布局-根据屏幕大小自动调整的布局。很高兴ConstraintLayout发布了1.1.0版本，1.1.0的这些新特性让ConstraintLayout能够做出更好的工作，并且不丢失原有的特性。
 

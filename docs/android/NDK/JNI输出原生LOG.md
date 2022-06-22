@@ -12,7 +12,7 @@
 
 生成好的项目会在**main**目录下创建好**cpp**目录和相应的cpp文件，以及**CmakeLists**文件
 
-![](../imgs/ndk_log_1.awebp)
+![](imgs/ndk_log_1.awebp)
 
 ### CmakeLists
 

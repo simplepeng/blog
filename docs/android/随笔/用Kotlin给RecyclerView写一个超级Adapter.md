@@ -1,6 +1,4 @@
-# 用Kotlin给RecyclerView封装一个Adapter
-
-
+# Kotlin封装RecyclerView的Adapter
 
 ## 正常RecycleView + Adapter 的写法
 

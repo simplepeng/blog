@@ -1,4 +1,4 @@
-# [译]从Java切换到Kotlin：5个令Android开发者兴奋的特征
+# [译]从Java切换到Kotlin
 
 ## 1.命名参数
 

@@ -1,4 +1,4 @@
-# 使用Android Support Annotations优化你的代码
+# 使用Support注解包优化代码逻辑
 
 Android Support Annotations提供的注解允许你像lint检查那样提供一些提示信息在审查代码上，这可以帮助你解决一些难以发现的代码问题。
 

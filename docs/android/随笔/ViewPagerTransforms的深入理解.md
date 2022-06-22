@@ -1,7 +1,7 @@
-# ViewPagerTransforms的深入理解-给viewpager切换加动画
+# ViewPagerTransforms的深入理解
 
 github地址：
->https://github.com/simplepeng/ViewPagerTransforms
+> https://github.com/simplepeng/ViewPagerTransforms
 
 每当viewpager上一个可见或依附的页面发生了滚动事件就会调用PageTransformer，这让应用可以使用自定义transformation让viewpager某一个页面视图上实现某些特定的动画属性。
 
@@ -291,62 +291,3 @@ public class SimplePageTransform implements ViewPager.PageTransformer {
 * transformPage返回的view的区间[-1,0)这个区间为left，(0，1]这个区间为right，只有当等于0为center
 *  viewpager的PageTransformer是在3.0以后加的新特性
  * ps:如果想兼容3.0以下也有办法，要么用反射，要么就自己自定义一个view实现viewpager所有功能，其实android很多兼容包都会利用反射技能去兼容低版本无法使用新特性这样一个缺点
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

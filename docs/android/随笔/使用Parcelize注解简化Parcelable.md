@@ -1,4 +1,4 @@
-# kotlin使用Parcelize注解简化Parcelable的书写
+# 使用Parcelize注解简化Parcelable
 
 ## Parcelize注解
 
