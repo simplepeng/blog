@@ -5,15 +5,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>[译]从Java切换到Kotlin：5个令Android开发者兴奋的特征 - simplepeng</title>
+    <title>使用Parcelize注解简化Parcelable - simplepeng</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "[\u8bd1]\u4eceJava\u5207\u6362\u5230Kotlin\uff1a5\u4e2a\u4ee4Android\u5f00\u53d1\u8005\u5174\u594b\u7684\u7279\u5f81";
-        var mkdocs_page_input_path = "android/\u968f\u7b14/\u4eceJava\u5207\u6362\u5230Kotlin\uff1a5\u4e2a\u4ee4Android\u5f00\u53d1\u8005\u5174\u594b\u7684\u7279\u5f81.md";
+        var mkdocs_page_name = "\u4f7f\u7528Parcelize\u6ce8\u89e3\u7b80\u5316Parcelable";
+        var mkdocs_page_input_path = "android/\u968f\u7b14/\u4f7f\u7528Parcelize\u6ce8\u89e3\u7b80\u5316Parcelable.md";
         var mkdocs_page_url = null;
       </script>
     
@@ -96,7 +96,7 @@
     <ul>
                 <li class="toctree-l2"><a class="reference internal" href="../../%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8FRIDA-DEXDump%E8%84%B1%E5%A3%B3/">使用FRIDA-DEXDump脱壳</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../../%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8MuMu%E6%A8%A1%E6%8B%9F%E5%99%A8%2BXposed%2BFdex2%E8%84%B1360%E5%8A%A0%E5%9B%BA%E7%9A%84%E5%A3%B3/">使用MuMu模拟器+Xposed+Fdex2脱360加固的壳</a>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8MuMu%E6%A8%A1%E6%8B%9F%E5%99%A8%E8%84%B1360%E5%8A%A0%E5%9B%BA%E7%9A%84%E5%A3%B3/">使用MuMu模拟器脱360加固的壳</a>
                 </li>
     </ul>
                   </li>
@@ -104,21 +104,23 @@
     <ul class="current">
                 <li class="toctree-l2"><a class="reference internal" href="../ADB%20%E5%BD%95%E5%88%B6%E5%B1%8F%E5%B9%95%E5%91%BD%E4%BB%A4/">ADB 录制屏幕命令</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../AS%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/">AS本地Maven仓库搭建</a>
+                <li class="toctree-l2"><a class="reference internal" href="../AS%E6%98%BE%E7%A4%BANavigation%E6%A0%87%E7%AD%BE/">AS显示Navigation标签</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../Android%20Gradle%20manifestPlaceholders%20%E7%9A%84%E5%A6%99%E7%94%A8/">Android Gradle manifestPlaceholders 的妙用</a>
+                <li class="toctree-l2"><a class="reference internal" href="../AS%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/">AS本地Maven仓库搭建</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Android%20Material%20buttons/">[译]Android Material buttons</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../Android%20Selector%E7%9A%84%E7%AE%80%E5%86%99/">Android Selector的简写</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../Android%20Studio%E6%89%BE%E4%B8%8D%E5%88%B0navigation%E6%A0%87%E7%AD%BE%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Android Studio找不到navigation标签的解决办法</a>
-                </li>
-                <li class="toctree-l2"><a class="reference internal" href="../Android%E5%B9%B3%E5%8F%B0%E7%9A%84Swift%E2%80%94Kotlin%E5%85%A5%E9%97%A8%E8%AE%B2%E8%A7%A3/">Android平台的Swift—Kotlin入门讲解</a>
+                <li class="toctree-l2"><a class="reference internal" href="../ConstraintLayout-1.1.0%E6%96%B0%E7%89%B9%E6%80%A7/">ConstraintLayout-1.1.0新特性</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../EventBus%E6%90%AD%E9%85%8DLifeCycle%E5%8F%AF%E8%83%BD%E6%9B%B4%E7%BE%8E%E5%91%B3/">EventBus搭配LifeCycle可能更美味</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../Kotlin%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0let%2Capply%2Calso%2Cwith%2Crun/">Kotlin内建函数let,apply,also,with,run.md</a>
+                <li class="toctree-l2"><a class="reference internal" href="../Kotlin%E5%85%A5%E9%97%A8%E8%AE%B2%E8%A7%A3/">Kotlin入门讲解</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../Kotlin%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0/">Kotlin内建函数</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../ManifestPlaceholders%E7%9A%84%E5%A6%99%E7%94%A8/">ManifestPlaceholders的妙用</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../PopupMenu%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">PopupMenu简单使用</a>
                 </li>
@@ -126,29 +128,39 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../ViewDragHelper%E7%AE%80%E8%A7%A3/">ViewDragHelper简解</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../ViewPageerTransform%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%2C%E7%BB%99viewpager%E5%88%87%E6%8D%A2%E5%8A%A0%E5%8A%A8%E7%94%BB/">ViewPagerTransforms的深入理解-给viewpager切换加动画</a>
+                <li class="toctree-l2"><a class="reference internal" href="../ViewPagerTransforms%E7%9A%84%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3/">ViewPagerTransforms的深入理解</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../kotlin%E4%BD%BF%E7%94%A8Parcelize%E6%B3%A8%E8%A7%A3%E7%AE%80%E5%8C%96Parcelable%E7%9A%84%E4%B9%A6%E5%86%99/">kotlin使用Parcelize注解简化Parcelable的书写</a>
-                </li>
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">[译]从Java切换到Kotlin：5个令Android开发者兴奋的特征</a>
-    <ul class="current">
-    <li class="toctree-l3"><a class="reference internal" href="#1">1.命名参数</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#2">2.数据类</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#3">3.空安全和安全的调用</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#4">4.拓展属性</a>
-    </li>
-    <li class="toctree-l3"><a class="reference internal" href="#5">5.智能转换</a>
-    </li>
-    </ul>
+                <li class="toctree-l2"><a class="reference internal" href="../%5B%E8%AF%91%5D%E4%BB%8EJava%E5%88%87%E6%8D%A2%E5%88%B0Kotlin/">[译]从Java切换到Kotlin</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E4%BC%98%E5%8C%96%E5%B5%8C%E5%A5%97%E7%9A%84RecyclerView/">[译]优化嵌套的RecyclerView</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Android%20Support%20Annotations%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/">使用Android Support Annotations优化你的代码</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/">[译]使用Gradle和Kotlin组织Android的资源文件</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">使用Parcelize注解简化Parcelable</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#parcelize">Parcelize注解</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_1">需求环境</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">开始使用</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#buildgradle">在build.gradle中添加支持</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#_3">实体类</a>
+    </li>
+    <li class="toctree-l4"><a class="reference internal" href="#java">对比Java实体类</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#lint">关于Lint检查报错</a>
+        <ul>
+    <li class="toctree-l4"><a class="reference internal" href="#_4">英文原文链接</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../%E4%BD%BF%E7%94%A8Support%E6%B3%A8%E8%A7%A3%E5%8C%85%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91/">使用Support注解包优化代码逻辑</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">在Activity的onCreate方法中调用finish的生命周期</a>
                 </li>
@@ -156,15 +168,13 @@
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/">无障碍服务研究</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/">用Kotlin给RecyclerView封装一个Adapter</a>
+                <li class="toctree-l2"><a class="reference internal" href="../%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/">Kotlin封装RecyclerView的Adapter</a>
                 </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E7%9C%8B%E5%AE%8C%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%BD%A0%E8%BF%98%E4%B8%8D%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager%EF%BC%9F/">看完这篇文章你还不会自定义LayoutManager？</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E7%BA%A6%E6%9D%9F%E5%B8%83%E5%B1%80%EF%BC%88ConstraintLayout%EF%BC%891.1.0%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">约束布局（ConstraintLayout）1.1.0的新特性</a>
-                </li>
                 <li class="toctree-l2"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/">自定义SnackBar</a>
                 </li>
-                <li class="toctree-l2"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7-SpiderMan/">如何自定义一个全局异常捕获器-SpiderMan</a>
+                <li class="toctree-l2"><a class="reference internal" href="../%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7%E5%99%A8/">自定义全局异常捕获器</a>
                 </li>
     </ul>
                   </li>
@@ -193,9 +203,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Android &raquo;</li>
-          <li>随笔 &raquo;</li><li>[译]从Java切换到Kotlin：5个令Android开发者兴奋的特征</li>
+          <li>随笔 &raquo;</li><li>使用Parcelize注解简化Parcelable</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/随笔/从Java切换到Kotlin：5个令Android开发者兴奋的特征.md"
+        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/随笔/使用Parcelize注解简化Parcelable.md"
           class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
@@ -205,110 +215,88 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="javakotlin5android">[译]从Java切换到Kotlin：5个令Android开发者兴奋的特征</h1>
-<h2 id="1">1.命名参数</h2>
-<p>每个Java开发者的噩梦：大量的参数（例如在Cursors或Android中创建SQLite查询），它们的名字和方法定义中的顺序。如果没有文档或IDE帮助，您无法在Java中正确编写它</p>
-<pre><code class="language-java">@Override
-public Loader&lt;Cursor&gt; onCreateLoader(int i, Bundle bundle) {
-    return new CursorLoader(this, CONTENT_URI, proj, 
-                             null, null, null);
+                <h1 id="parcelizeparcelable">使用Parcelize注解简化Parcelable</h1>
+<h2 id="parcelize">Parcelize注解</h2>
+<p>kotlin在1.1.4版本增加了对parcelable的支持</p>
+<p>Android扩展插件现在包含一个实现了Parcelable的自动生成器。在主构造函数中声明序列化的属性并添加一个@Parcelize注解，生成器就会自动创建writeToParcel（）/ createFromParcel（）方法</p>
+<h2 id="_1">需求环境</h2>
+<p>Kotlin版本为1.1.4或者更高</p>
+<h2 id="_2">开始使用</h2>
+<h3 id="buildgradle">在build.gradle中添加支持</h3>
+<pre><code class="language-groovy">apply plugin: ‘kotlin-android-extensions’
+....
+androidExtensions {
+    experimental = true
 }
 </code></pre>
-<p>幸运的是，Android Studio团队添加了有用的功能，突出显示了传递给这种功能的参数的名称。但是，Kotlin在没有IDE帮助的情况下实现同样的效果也很容易</p>
-<h2 id="2">2.数据类</h2>
-<p>对Kotlin来说，这可能是Java编程人员最有用，最“壮观”的选择之一。数据类使每个开发人员的生活变得更加简单，因为它仅用一行代码表示我们心爱的POJO类</p>
-<p>Java：</p>
-<pre><code class="language-java">public class Person {
-    private final String name;
-    private final int age;
+<h3 id="_3">实体类</h3>
+<p>Student.kt </p>
+<pre><code class="language-kotlin">@Parcelize
+data class Student(val id: String, val name: String, val grade: String) : Parcelable
+</code></pre>
+<h3 id="java">对比Java实体类</h3>
+<p>Student.java</p>
+<pre><code class="language-java">public class Student implements Parcelable{
+        private String id;
+        private String name;
+        private String grade;
 
-    public Person(String name, int age) {
-        this.name = name;
-        this.age = age;
-    }
+        // Constructor
+        public Student(String id, String name, String grade){
+            this.id = id;
+            this.name = name;
+            this.grade = grade;
+       }
+       // Getter and setter methods
+       .........
+       .........
 
-    public String getName() {
-        return name;
-    }
+       // Parcelling part
+       public Student(Parcel in){
+           String[] data = new String[3];
 
-    public int getAge() {
-        return age;
-    }
-}
-</code></pre>
-<p>Kotlin</p>
-<pre><code class="language-kotlin">data class Person(val name: String, val age: Int)
-</code></pre>
-<p>这里做了什么？编译器会自动从主构造函数中声明的所有属性中派生下列成员：</p>
-<ul>
-<li>Any类的标准方法（相当于Java中的Object）：equals（），hashCode（），copy（）</li>
-<li>toString() 形式为 Person(name=Michał, age=22)</li>
-<li>不再需要getter，setter，直接使用对象属性</li>
-</ul>
-<p>它有助于摆脱我们通常不想维护的样板代码 - 在Kotlin中，编译器为我们做了。从现在起，我们可以关注应用程序的实际功能，而不是一次又一次重复相同的代码</p>
-<h2 id="3">3.空安全和安全的调用</h2>
-<p>Kotlin的主要目标之一是清除空引用异常。它仍然提供可空的类型，但仅限于与Java代码完全协作。默认的Kotlin类型是非空的，如果您试图将它们标记为null，它不会让您编译通过。</p>
-<pre><code class="language-kotlin">var bundle : Bundle = null //won't compile
-var bundle : Bundle? = null //nullable type, it compiles
-</code></pre>
-<p>Java中的典型情况:</p>
-<pre><code class="language-java">public void sendMessage(@Nullable Person person, @NotNull Mailer mailer, String message) {
-    if (person == null || message == null) return;
-    PersonalInfo personalInfo = person.getPersonalInfo();
+           in.readStringArray(data);
+           // the order needs to be the same as in writeToParcel() method
+           this.id = data[0];
+           this.name = data[1];
+           this.grade = data[2];
+       }
 
-    if (personalInfo == null) return;
-    String email = personalInfo.getEmail();
+       @Оverride
+       public int describeContents(){
+           return 0;
+       }
 
-    if (email == null) return;
-    mailer.sendMessage(email, message);
-}
-</code></pre>
-<p>同样的情况在Kotlin中：</p>
-<pre><code class="language-kotlin">fun sendMessage(person: Person?, mailer: Mailer, String message){
-    val email = client?.personalInfo?.email
+       @Override
+       public void writeToParcel(Parcel dest, int flags) {
+           dest.writeStringArray(new String[] {this.id,
+                                               this.name,
+                                               this.grade});
+       }
+       public static final Parcelable.Creator CREATOR = new Parcelable.Creator() {
+           public Student createFromParcel(Parcel in) {
+               return new Student(in); 
+           }
 
-    if (email != null &amp;&amp; message != null) {
-        mailer.sendMessage(email, message)
-    }
-}
+           public Student[] newArray(int size) {
+               return new Student[size];
+           }
+       };
+   }
 </code></pre>
-<p>空检查让我们写更少的代码，使我们的应用程序更好地工作，而且使它看起来更好。这不是很棒吗?</p>
-<h2 id="4">4.拓展属性</h2>
-<p>当我每次需要删除重复的转换时，扩展属性都可以帮助到我，传统方式，我们可能写出如下代码：</p>
-<pre><code class="language-kotlin">var myBigDecimal = 26 as BigDecimal
-var otherBigDecimal : BigDecimal = myBigDecimal
-</code></pre>
-<p>所以让我们用扩展属性代替上面的代码</p>
-<pre><code class="language-kotlin">val Int.bd : BigDecimal                           
-     get() = BigDecimal(this)
-</code></pre>
-<p>在我们扩展Int类后，我们现在可以轻松地将我们的Ints转换为BigDecimals,它的工作原理完全相同:</p>
-<pre><code class="language-kotlin">var myBigDecimal = 26.bd
-var otherBigDecimal : BigDecimal = myBigDecimal
-</code></pre>
-<p>我们已经完成了所有工作，无需从类继承或使用任何类型的设计模式，例如装饰器。 Kotlin提供了以快速和简单的方式使用新功能扩展课程的功能。</p>
-<h2 id="5">5.智能转换</h2>
-<p>当涉及类型转换时，Kotlin将表现得十分智能</p>
-<pre><code class="language-kotlin">fun demo(x: Any) {
-    if (x is String) {
-        print(x.length) // x is automatically cast to String
-    }
-}
-</code></pre>
-<p>关键字 is 相当于Java中的 instanceof，但它具有自己的强大功能。编译器检查if声明中的对象属于哪种实例，然后转换if代码块中的实例属性</p>
-<pre><code class="language-kotlin">when (x) {
-    is Int -&gt; print(x + 1)
-    is String -&gt; print(x.length + 1)
-    is IntArray -&gt; print(x.sum())
-}
-</code></pre>
-<p><a href="https://android.jlelse.eu/switching-from-java-to-kotlin-5-exciting-features-for-android-developers-49ce712a546">原文链接</a></p>
+<h2 id="lint">关于Lint检查报错</h2>
+<p>现在Android Studio会爆出下面图中的这个错误，这是IntelliJ的Bug，你可以在下面的链接找到相应的答案</p>
+<p><a href="">https://youtrack.jetbrains.com/issue/KT-19300</a></p>
+<p><img alt="这里写图片描述" src="http://img.blog.csdn.net/20171205120006608?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcXFfMjE3OTM0NjM=/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast" /></p>
+<p>所以你可以忽略这个警告并编译项目，或者也可以添加@SuppressLint("ParcelCreator")注解</p>
+<h3 id="_4">英文原文链接</h3>
+<p><a href="">https://android.jlelse.eu/yet-another-awesome-kotlin-feature-parcelize-5439718ba220</a></p>
               
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../kotlin%E4%BD%BF%E7%94%A8Parcelize%E6%B3%A8%E8%A7%A3%E7%AE%80%E5%8C%96Parcelable%E7%9A%84%E4%B9%A6%E5%86%99/" class="btn btn-neutral float-left" title="kotlin使用Parcelize注解简化Parcelable的书写"><span class="icon icon-circle-arrow-left"></span> Previous</a>
-        <a href="../%E4%BC%98%E5%8C%96%E5%B5%8C%E5%A5%97%E7%9A%84RecyclerView/" class="btn btn-neutral float-right" title="[译]优化嵌套的RecyclerView">Next <span class="icon icon-circle-arrow-right"></span></a>
+        <a href="../%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/" class="btn btn-neutral float-left" title="[译]使用Gradle和Kotlin组织Android的资源文件"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../%E4%BD%BF%E7%94%A8Support%E6%B3%A8%E8%A7%A3%E5%8C%85%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91/" class="btn btn-neutral float-right" title="使用Support注解包优化代码逻辑">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
   <hr/>
@@ -335,10 +323,10 @@ var otherBigDecimal : BigDecimal = myBigDecimal
         </span>
     
     
-      <span><a href="../kotlin%E4%BD%BF%E7%94%A8Parcelize%E6%B3%A8%E8%A7%A3%E7%AE%80%E5%8C%96Parcelable%E7%9A%84%E4%B9%A6%E5%86%99/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
-      <span><a href="../%E4%BC%98%E5%8C%96%E5%B5%8C%E5%A5%97%E7%9A%84RecyclerView/" style="color: #fcfcfc">Next &raquo;</a></span>
+      <span><a href="../%E4%BD%BF%E7%94%A8Support%E6%B3%A8%E8%A7%A3%E5%8C%85%E4%BC%98%E5%8C%96%E4%BB%A3%E7%A0%81%E9%80%BB%E8%BE%91/" style="color: #fcfcfc">Next &raquo;</a></span>
     
   </span>
 </div>
