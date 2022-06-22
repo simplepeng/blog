@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../../img/favicon.ico" />
+    <title>编译可执行命令的FFmpeg - simplepeng</title>
+    <link rel="stylesheet" href="../../../css/theme.css" />
+    <link rel="stylesheet" href="../../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "\u7f16\u8bd1\u53ef\u6267\u884c\u547d\u4ee4\u7684FFmpeg";
+        var mkdocs_page_input_path = "android/FFmpeg/\u7f16\u8bd1\u53ef\u6267\u884c\u547d\u4ee4\u7684FFmpeg.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <script src="../../../js/jquery-3.6.0.min.js" defer></script>
+    <!--[if lt IE 9]>
+      <script src="../../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/highlight.min.js"></script>
+      <script>hljs.initHighlightingOnLoad();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../../.." class="icon icon-home"> simplepeng
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+      <input type="text" name="q" placeholder="Search docs" title="Type search term here" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../../..">摘要</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Android</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">FFmpeg</a>
+    <ul class="current">
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">编译可执行命令的FFmpeg</a>
+    <ul class="current">
+    <li class="toctree-l3"><a class="reference internal" href="#_1">导入源码</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#cmakelist">编写CmakeList</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ffmpeg_1">修改FFmpeg的源码</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#ffmpeg_2">增加FFmpeg日志输出</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_2">编写工具类方法</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#_3">使用已有的轮子</a>
+    </li>
+    </ul>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93/">编译成动态库</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../%E8%8E%B7%E5%8F%96%E8%A7%86%E9%A2%91%E9%A6%96%E5%B8%A7%E8%BD%ACBitmap%E5%B0%81%E9%9D%A2%E5%9B%BE/">获取视频首帧转Bitmap封面图</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">Jetpack</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../Jetpack/Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94LiveData/">Android架构组件-LiveData</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Jetpack/Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94Room/">Android架构组件-Room</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Jetpack/Android%E6%9E%B6%E6%9E%84%E7%BB%84%E4%BB%B6%E2%80%94ViewModel/">Android架构组件—ViewModel</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../Jetpack/Architecture%20Components%E4%BB%8B%E7%BB%8D/">Architecture Components介绍</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">NDK</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../NDK/Cmake%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">Cmake学习笔记</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../NDK/JNI%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">JNI学习笔记</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../NDK/JNI%E8%BE%93%E5%87%BA%E5%8E%9F%E7%94%9FLOG/">JNI输出原生LOG</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../NDK/%E7%BB%99%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0JNI%E6%94%AF%E6%8C%81/">给已有项目添加JNI/CMake支持</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">源码分析</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/%E6%88%91%E5%AF%B9Retrofit%E7%9A%84%E7%90%86%E8%A7%A3/">我对Retrofit的理解</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">自定义View</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E8%87%AA%E5%AE%9A%E4%B9%89View/%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/">自定义View的构造方法解析</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">逆向</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8FRIDA-DEXDump%E8%84%B1%E5%A3%B3/">使用FRIDA-DEXDump脱壳</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%80%86%E5%90%91/%E4%BD%BF%E7%94%A8MuMu%E6%A8%A1%E6%8B%9F%E5%99%A8%2BXposed%2BFdex2%E8%84%B1360%E5%8A%A0%E5%9B%BA%E7%9A%84%E5%A3%B3/">使用MuMu模拟器+Xposed+Fdex2脱360加固的壳</a>
+                </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="#">随笔</a>
+    <ul>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/ADB%20%E5%BD%95%E5%88%B6%E5%B1%8F%E5%B9%95%E5%91%BD%E4%BB%A4/">ADB 录制屏幕命令</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/AS%E6%9C%AC%E5%9C%B0Maven%E4%BB%93%E5%BA%93%E6%90%AD%E5%BB%BA/">AS本地Maven仓库搭建</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/Android%20Gradle%20manifestPlaceholders%20%E7%9A%84%E5%A6%99%E7%94%A8/">Android Gradle manifestPlaceholders 的妙用</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/Android%20Material%20buttons/">[译]Android Material buttons</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/Android%20Selector%E7%9A%84%E7%AE%80%E5%86%99/">Android Selector的简写</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/Android%20Studio%E6%89%BE%E4%B8%8D%E5%88%B0navigation%E6%A0%87%E7%AD%BE%E7%9A%84%E8%A7%A3%E5%86%B3%E5%8A%9E%E6%B3%95/">Android Studio找不到navigation标签的解决办法</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/Android%E5%B9%B3%E5%8F%B0%E7%9A%84Swift%E2%80%94Kotlin%E5%85%A5%E9%97%A8%E8%AE%B2%E8%A7%A3/">Android平台的Swift—Kotlin入门讲解</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/EventBus%E6%90%AD%E9%85%8DLifeCycle%E5%8F%AF%E8%83%BD%E6%9B%B4%E7%BE%8E%E5%91%B3/">EventBus搭配LifeCycle可能更美味</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/Kotlin%E5%86%85%E5%BB%BA%E5%87%BD%E6%95%B0let%2Capply%2Calso%2Cwith%2Crun/">Kotlin内建函数let,apply,also,with,run.md</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/PopupMenu%E7%AE%80%E5%8D%95%E4%BD%BF%E7%94%A8/">PopupMenu简单使用</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/RxJava%E5%B8%B8%E7%94%A8%E6%93%8D%E4%BD%9C%E7%AC%A6/">RxJava常用操作符</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/ViewDragHelper%E7%AE%80%E8%A7%A3/">ViewDragHelper简解</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/ViewPageerTransform%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3%2C%E7%BB%99viewpager%E5%88%87%E6%8D%A2%E5%8A%A0%E5%8A%A8%E7%94%BB/">ViewPagerTransforms的深入理解-给viewpager切换加动画</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/kotlin%E4%BD%BF%E7%94%A8Parcelize%E6%B3%A8%E8%A7%A3%E7%AE%80%E5%8C%96Parcelable%E7%9A%84%E4%B9%A6%E5%86%99/">kotlin使用Parcelize注解简化Parcelable的书写</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E4%BB%8EJava%E5%88%87%E6%8D%A2%E5%88%B0Kotlin%EF%BC%9A5%E4%B8%AA%E4%BB%A4Android%E5%BC%80%E5%8F%91%E8%80%85%E5%85%B4%E5%A5%8B%E7%9A%84%E7%89%B9%E5%BE%81/">[译]从Java切换到Kotlin：5个令Android开发者兴奋的特征</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E4%BC%98%E5%8C%96%E5%B5%8C%E5%A5%97%E7%9A%84RecyclerView/">[译]优化嵌套的RecyclerView</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E4%BD%BF%E7%94%A8Android%20Support%20Annotations%E4%BC%98%E5%8C%96%E4%BD%A0%E7%9A%84%E4%BB%A3%E7%A0%81/">使用Android Support Annotations优化你的代码</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E4%BD%BF%E7%94%A8Gradle%E5%92%8CKotlin%E7%BB%84%E7%BB%87Android%E7%9A%84%E8%B5%84%E6%BA%90%E6%96%87%E4%BB%B6/">[译]使用Gradle和Kotlin组织Android的资源文件</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E5%9C%A8Activity%E7%9A%84onCreate%E6%96%B9%E6%B3%95%E4%B8%AD%E8%B0%83%E7%94%A8finish%E7%9A%84%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F/">在Activity的onCreate方法中调用finish的生命周期</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E5%BD%93item%E8%B6%85%E8%BF%87%E4%B8%80%E5%AE%9A%E6%95%B0%E9%87%8F%EF%BC%8C%E5%A6%82%E4%BD%95%E6%AD%A3%E7%A1%AE%E7%9A%84%E8%AE%BE%E7%BD%AERecyclerView%E7%9A%84maxHeight/">当item超过一定数量，如何正确的设置RecyclerView的maxHeight</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E6%97%A0%E9%9A%9C%E7%A2%8D%E6%9C%8D%E5%8A%A1%E7%A0%94%E7%A9%B6/">无障碍服务研究</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E7%94%A8Kotlin%E7%BB%99RecyclerView%E5%86%99%E4%B8%80%E4%B8%AA%E8%B6%85%E7%BA%A7Adapter/">用Kotlin给RecyclerView封装一个Adapter</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E7%9C%8B%E5%AE%8C%E8%BF%99%E7%AF%87%E6%96%87%E7%AB%A0%E4%BD%A0%E8%BF%98%E4%B8%8D%E4%BC%9A%E8%87%AA%E5%AE%9A%E4%B9%89LayoutManager%EF%BC%9F/">看完这篇文章你还不会自定义LayoutManager？</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E7%BA%A6%E6%9D%9F%E5%B8%83%E5%B1%80%EF%BC%88ConstraintLayout%EF%BC%891.1.0%E7%9A%84%E6%96%B0%E7%89%B9%E6%80%A7/">约束布局（ConstraintLayout）1.1.0的新特性</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E8%87%AA%E5%AE%9A%E4%B9%89SnackBar/">自定义SnackBar</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../../%E9%9A%8F%E7%AC%94/%E8%87%AA%E5%AE%9A%E4%B9%89%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8%E6%8D%95%E8%8E%B7-SpiderMan/">如何自定义一个全局异常捕获器-SpiderMan</a>
+                </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">其他</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../%E5%85%B6%E4%BB%96/HenCoder-5%E6%9C%9F-%E5%AD%A6%E4%B9%A0%E7%AC%94%E8%AE%B0/">HenCoder-5期-学习笔记</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../%E5%85%B6%E4%BB%96/MacOS%2010.10%20%E4%BB%A5%E4%B8%8A%E8%A7%A3%E5%86%B3%E6%9C%BA%E6%A2%B0%E9%94%AE%E7%9B%98%E6%8C%89%E9%94%AE%E6%97%A0%E6%B3%95%E8%AF%86%E5%88%AB/">MacOS-10.10以上--解决机械键盘按键无法识别</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../../%E5%85%B6%E4%BB%96/%E7%A7%BB%E5%8A%A8%E7%AB%AF%E9%9F%B3%E8%A7%86%E9%A2%91%E5%85%A5%E9%97%A8-FFmpeg%28%E5%85%AC%E5%8F%B8%E6%8A%80%E6%9C%AF%E5%88%86%E4%BA%AB%29/">移动端音视频入门 FFmpeg(公司技术分享)</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Mobile navigation menu">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../..">simplepeng</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
+          <li>Android &raquo;</li>
+          <li>FFmpeg &raquo;</li><li>编译可执行命令的FFmpeg</li>
+    <li class="wy-breadcrumbs-aside">
+        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/FFmpeg/编译可执行命令的FFmpeg.md"
+          class="icon icon-github"> Edit on GitHub</a>
+    </li>
+  </ul>
+  <hr/>
+</div>
+
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="ffmpeg">编译可执行命令的FFmpeg</h1>
+<p>上一篇讲到了<code>使用FFmpeg生成视频封面图</code>，其实也可以直接使用<code>FFmpeg相关命令</code>截取一帧的图像数据保存到本地，然后加载到ImageView上，有时候使用命令确实比写代码更加简单和使人轻松一点，所以这一篇是讲解如何导入<code>FFmpeg相关源码</code> 然后如何执行命令行工具的博客，但是其实这只是个Demo而已，因为有很多细节需要处理，推荐直接使用开源库。</p>
+<h2 id="_1">导入源码</h2>
+<p>从FFmpeg源码中导入<code>cmdutils.c</code>、<code>cmdutils.h</code>、<code>config.h</code>、<code>ffmpeg.c</code>、<code>ffmpeg.h</code>、</p>
+<p><code>ffmpeg_filter.c</code>、<code>ffmpeg_hw.c</code>、<code>ffmpeg_opt.c</code>这几个源码，一般存放在<code>fftools</code>目录下。<code>config.h</code>如果编译生成目录下没有，就可以直接使用ffmpeg根目录下的<code>config.h</code>。</p>
+<h2 id="cmakelist">编写CmakeList</h2>
+<pre><code class="language-cmake"># 设置构建本机库文件所需的 CMake的最小版本
+cmake_minimum_required(VERSION 3.4.1)
+
+#添加头文件的搜索路径
+include_directories(src/main/cpp/include)
+
+#设置查找动态库位置
+set(LINK_DIR ${CMAKE_SOURCE_DIR}/libs/${CMAKE_ANDROID_ARCH_ABI})
+link_directories(${LINK_DIR})
+#找到所有的so库，存放在全局变量SO_DIR中
+file(GLOB SO_DIR ${LINK_DIR}/*.so)
+
+#找到所有的源文件，存放在全局变量中
+#file(GLOB FFMPEG_DIR src/main/cpp/ffmpeg/*.c)
+#message(&quot;FFMPEG_DIR == ${FFMPEG_DIR}&quot;)
+
+file(GLOB CPP_DIR src/main/cpp/*.cpp)
+file(GLOB FFMPEG_DIR src/main/cpp/include/*.c)
+
+# 添加自己写的 C/C++源文件
+add_library(utils #so名称
+        SHARED #动态库
+        ${CPP_DIR}
+        ${FFMPEG_DIR}
+        )
+
+#  依赖 NDK中自带的log库
+find_library(log-lib log)
+
+#  链接库
+target_link_libraries(
+        utils
+        ${SO_DIR}
+        jnigraphics
+        ${log-lib})
+</code></pre>
+<p>我是将ffmpeg的源码和之前生成的ffmpeg头文件都放在了<code>cpp/include</code>目录下，这样在CmakeList中使用<code>include_directories</code>就可以直接找到所有的头文件，然后将ffmpeg的源码和自己写的工具类源码关联起来就行了。</p>
+<h2 id="ffmpeg_1">修改FFmpeg的源码</h2>
+<p>修改<code>ffmpeg.c</code>的<code>main</code>方法名称为<code>exe_cmd</code>，并在<code>ffmpeg.h</code>头文件加上同样名称的方法声明。</p>
+<pre><code class="language-c">//ffmpeg.c
+int exe_cmd(int argc, char **argv) {
+  ...
+}
+//ffmpeg.h
+int exe_cmd(int argc, char **argv);
+</code></pre>
+<p>原生命令行工具在执行完FFmpeg命令后都会退出程序，但是在Android里面可不能这样，所以我们要修改FFmpeg结束程序的函数。</p>
+<p>修改<code>cmdutils.c</code>和<code>cmdutils.h</code>，注释掉退出程序的代码，并且增加一个int的返回值。</p>
+<pre><code class="language-c">//cmdutils.c
+int exit_program(int ret)
+{
+//    if (program_exit)
+//        program_exit(ret);
+
+//    exit(ret);
+    return ret;
+}
+
+//cmdutils.h
+int exit_program(int ret);
+</code></pre>
+<p>并且在Android里面我们肯定是执行完一条命令，接着还会继续执行其他命令，所以我们需要重新初始化一些关键变量的值。</p>
+<p>找到<code>ffmpeg.c</code>中的<code>ffmpeg_cleanup</code>函数，在末尾将一些关键变量重新初始化。</p>
+<pre><code class="language-c">//ffmpeg.c
+static void ffmpeg_cleanup(int ret) {
+  ...
+    nb_filtergraphs = 0;
+    nb_output_files = 0;
+    nb_output_streams = 0;
+    nb_input_files = 0;
+    nb_input_streams = 0;
+}
+</code></pre>
+<p>最后在<code>main</code>函数末尾调用<code>ffmpeg_cleanup</code>函数</p>
+<pre><code class="language-c">int exe_cmd(int argc, char **argv) {
+  ...
+    //    exit_program(received_nb_signals ? 255 : main_return_code);
+    ffmpeg_cleanup(0);
+}
+</code></pre>
+<h2 id="ffmpeg_2">增加FFmpeg日志输出</h2>
+<p>在<code>ffmpeg.c</code>中找到<code>log_callback_null</code>的函数，添加如下代码，原代码块是空实现。</p>
+<pre><code class="language-c">#include &quot;android/log.h&quot;
+#define logDebug(...) __android_log_print(ANDROID_LOG_DEBUG,&quot;MainActivity&quot;,__VA_ARGS__)
+
+static void log_callback_null(void *ptr, int level, const char *fmt, va_list vl) {
+    static int print_prefix = 1;
+    static int count;
+    static char prev[1024];
+    char line[1024];
+    static int is_atty;
+    av_log_format_line(ptr, level, fmt, vl, line, sizeof(line), &amp;print_prefix);
+    strcpy(prev, line);
+
+    logDebug(&quot;ffmpeg log ----- %s&quot;, line);
+}
+</code></pre>
+<p>在<code>main</code>函数中调用<code>log_callback_null</code>函数</p>
+<pre><code class="language-c">int exe_cmd(int argc, char **argv) {
+    av_log_set_callback(log_callback_null);
+     int i, ret;
+  ...
+}
+</code></pre>
+<h2 id="_2">编写工具类方法</h2>
+<p>在<code>MainActivity</code>中增加<code>exeCmd(String[] cmd)</code>方法</p>
+<pre><code class="language-java">public static native int exeCmd(String[] cmd);
+</code></pre>
+<p>在<code>ffmpeg_utils.cpp</code>增加jni方法</p>
+<pre><code class="language-c++">JNIEXPORT jint JNICALL
+Java_demo_simple_example_1ffmpeg_MainActivity_exeCmd(JNIEnv *env, jclass clazz, jobjectArray cmd) {
+    int argc = env-&gt;GetArrayLength(cmd);
+    logDebug(&quot;argc == %d&quot;, argc);
+    char *argv[argc];
+
+    for (int i = 0; i &lt; argc; ++i) {
+        jstring str = (jstring) env-&gt;GetObjectArrayElement(cmd, i);
+        argv[i] = (char *) env-&gt;GetStringUTFChars(str, JNI_FALSE);
+        logDebug(&quot;%s &quot;, argv[i]);
+    }
+
+    return exe_cmd(argc, argv);
+//    return 1;
+}
+</code></pre>
+<p>执行命令</p>
+<pre><code class="language-java">private void exeCmd() {
+        String path = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
+                + &quot;get_cover1.mp4&quot;;
+        String outPath = Environment.getExternalStorageDirectory().getAbsolutePath() + File.separator
+                + &quot;video.flv&quot;;
+        File outFile = new File(outPath);
+        if (outFile.exists()) {
+            outFile.delete();
+        }
+        //裁剪个1s视频
+        String cmd = &quot;ffmpeg -ss 00:00:00 -t 00:00:10 -i &quot; + path + &quot; -vcodec copy -acodec copy &quot; + outPath;
+        String[] cmdArr = cmd.split(&quot; &quot;);
+        int result = exeCmd(cmdArr);
+        Log.d(TAG, &quot;exe cmd result == &quot; + result);
+    }
+</code></pre>
+<p>查看日志输出</p>
+<pre><code class="language-shell">demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- 
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log -----   Total: 331 packets (1993540 bytes) demuxed
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- Output file #0 (/storage/emulated/0/video.flv):
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log -----   Output stream #0:0 (video): 
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- 129 packets muxed (1822580 bytes); 
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- 
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log -----   Output stream #0:1 (audio): 
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- 202 packets muxed (170960 bytes); 
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- 
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log -----   Total: 331 packets (1993540 bytes) muxed
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- 0 frames successfully decoded, 0 decoding errors
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- [AVIOContext @ 0xda2ea480] Statistics: 2 seeks, 10 writeouts
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- [AVIOContext @ 0xda2ea3c0] Statistics: 2161643 bytes read, 1 seeks
+demo.simple.example_ffmpeg D/MainActivity: ffmpeg log ----- 
+demo.simple.example_ffmpeg D/MainActivity: exe cmd result == 0
+</code></pre>
+<p>执行命令的返回值<code>==0</code>，并且也看到确实文件已经生成出来了，我们<code>adb pull</code>把文件导出到桌面用<code>ffprobe</code>或<code>ffplay</code>看看。</p>
+<pre><code class="language-shell">ffprobe video.flv
+</code></pre>
+<pre><code class="language-shell">ffprobe version 4.0.4 Copyright (c) 2007-2019 the FFmpeg developers
+built with Apple LLVM version 10.0.0 (clang-1000.10.44.4)
+configuration:
+libavutil      56. 14.100 / 56. 14.100
+libavcodec     58. 18.100 / 58. 18.100
+libavformat    58. 12.100 / 58. 12.100
+libavdevice    58.  3.100 / 58.  3.100
+libavfilter     7. 16.100 /  7. 16.100
+libswscale      5.  1.100 /  5.  1.100
+libswresample   3.  1.100 /  3.  1.100
+Input #0, flv, from 'video.flv':
+Metadata:
+ major_brand     : mp42
+ minor_version   : 0
+ compatible_brands: mp42mp41
+ encoder         : Lavf58.45.100
+Duration: 00:00:01.07, start: 0.033000, bitrate: 3130 kb/s
+ Stream #0:0: Video: h264 (Main), yuv420p(tv, bt709, progressive), 1080x1920, 3390 kb/s, 30 fps, 30 tbr, 1k tbn, 60 tbc
+ Stream #0:1: Audio: aac (LC), 48000 Hz, stereo, fltp, 317 kb/s
+</code></pre>
+<p>可以看到确实裁剪生成了一个1秒的视频，虽然后缀名我们用的<code>.flv</code>，但是其实我们是拷贝的视频编码，所以还是<code>mp4</code>的封装格式。</p>
+<p><a href="https://github.com/simplepeng/AndroidExamples/tree/master/example_ffmpeg">源码</a></p>
+<h2 id="_3">使用已有的轮子</h2>
+<p>上面的例子并不是一个完善的工具类，比如缺少Native层的线程支持，出现错误就会直接闪退，缺少进度回调等，所以还是直接使用现成的轮子比较靠谱，只是我们需要知道轮子大概是怎么造出来的就行了。</p>
+<p>这里我推荐使用<a href="https://github.com/tanersener/mobile-ffmpeg">mobile-ffmpeg</a>这个开源库，1.8k的star足以证明其品质还行，直接导入编译好的<code>aar</code>就可以执行命令行工具链，而且可以自行编译链接很多有用的第三方library，比如<code>x264</code>、<code>libwebp</code>   等。</p>
+<p>动手能力强或有特殊需求的可以使用<code>android.sh</code>自行编译出FFmpeg头文件和动态库，以及Android工具链的aar。</p>
+<p>比如说我现在只需要一个支持<code>arm64-v8a</code>和<code>api16</code>及以上的动态库，那么我就自己新建了一个shell脚本文件：</p>
+<pre><code class="language-shell">#!/bin/bash
+
+export ANDROID_HOME=&quot;/Users/chenpeng/Library/Android/sdk/&quot;
+export ANDROID_NDK_ROOT=&quot;/Users/chenpeng/Desktop/work_space/ndk/android-ndk-r21b/&quot;
+
+build() {
+    ./android.sh \
+        --lts \
+        --disable-arm-v7a \
+        --disable-arm-v7a-neon \
+        --disable-x86 \
+        --disable-x86-64
+}
+
+build
+</code></pre>
+<p>执行完这个shell后，就会在<code>prebuilt</code>目录下生产对应的头文件，动态库，以及aar文件，直接拿来用就可以了。</p>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
+        <a href="../../.." class="btn btn-neutral float-left" title="摘要"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93/" class="btn btn-neutral float-right" title="编译成动态库">Next <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Built with <a href="https://www.mkdocs.org/">MkDocs</a> using a <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versions">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+        <span>
+          <a href="https://github.com/simplepeng/blog" class="fa fa-github" style="color: #fcfcfc"> GitHub</a>
+        </span>
+    
+    
+      <span><a href="../../.." style="color: #fcfcfc">&laquo; Previous</a></span>
+    
+    
+      <span><a href="../%E7%BC%96%E8%AF%91%E6%88%90%E5%8A%A8%E6%80%81%E5%BA%93/" style="color: #fcfcfc">Next &raquo;</a></span>
+    
+  </span>
+</div>
+    <script>var base_url = '../../..';</script>
+    <script src="../../../js/theme_extra.js" defer></script>
+    <script src="../../../js/theme.js" defer></script>
+      <script src="../../../search/main.js" defer></script>
+    <script defer>
+        window.onload = function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        };
+    </script>
+
+</body>
+</html>
