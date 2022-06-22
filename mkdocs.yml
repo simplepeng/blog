@@ -1,6 +1,12 @@
-site_name: simplepeng
+site_name: blog
+site_url: http://simplepeng.com/blog
+site_author: simplepeng
 theme:
   name: readthedocs
+  highlightjs: true
+  hljs_languages:
+    - kotlin
+  sticky_navigation: false
 repo_url: https://github.com/simplepeng/blog
 # nav:
 # - 主页: index.md

@@ -2,7 +2,7 @@
 
 `PopupMenu` 是锚定到 `View` 的模态菜单。如果空间足够，它将显示在定位视图下方，否则显示在其上方
 
-<img src="https://ws1.sinaimg.cn/mw690/00677ch9gy1fmwxv9ycibj30bc0dqt90" />
+
 
 ```java
 public void popup(View view) {
@@ -138,7 +138,7 @@ public class PopupMenu {
 
 run 一下看看！
 
-![](https://ws1.sinaimg.cn/mw690/00677ch9gy1fmx0wc1z1gj30bq0gswf5)
+
 
 差不多是这个样子
 

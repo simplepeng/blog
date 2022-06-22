@@ -1,4 +1,4 @@
-# [译]从Java切换到Kotlin
+# [译]从Java切换到Kotlin的新特性
 
 ## 1.命名参数
 

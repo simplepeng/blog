@@ -1,15 +1,15 @@
-# 当item超过一定数量，如何正确的设置RecyclerView的maxHeight
+# MaxLineLayoutManager
 
 有时候，我们会遇到这种需求：一个线性的列表布局，当item量很少的时候，就是`wrap_content`直接展示完所有item，但是当item数量超过某个数时就要`固定高度`，让其变成可滑动展示更多的item。所以我们第一个想法就是用`RecyclerView`，应该没人会用`ListView`或自己写个`自定义ViewGroup`吧。
 
 但是当我们使用`RecyclerView`+`maxHeight`的时候，会发现其实`maxHeight`是不起作用的。
 
 ```xml
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/recyclerView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:maxHeight="100dp" />
+<androidx.recyclerview.widget.RecyclerView
+    android:id="@+id/recyclerView"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:maxHeight="100dp" />
 ```
 
 ![warp_recycler_view.gif](imgs/warp_recycler_view.gif)
@@ -107,7 +107,7 @@ class MaxLineLinearLayoutManager : LinearLayoutManager {
 [博客地址](https://juejin.im/post/6870770285247725581)
 
 ```kotlin
- recyclerView.layoutManager = MaxLineLinearLayoutManager(this, maxLine = 3)
+recyclerView.layoutManager = MaxLineLinearLayoutManager(this, maxLine = 3)
 ```
 
 ![maxline_layoutmanager.gif](imgs/maxline_layoutmanager.gif)

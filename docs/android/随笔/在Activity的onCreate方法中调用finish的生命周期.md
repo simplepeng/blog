@@ -1,4 +1,4 @@
-# 在Activity的onCreate方法中调用finish的生命周期
+# Activity的onCreate中调用finish的生命周期
 
 如题，正常来说Activity启动后会正常依次调用`onCreate`、`onStart`、`onResume`方法，关闭时会调用`onPause`、`onStop`、`onDestory`方法。那么当我们在`onCreate`方法中直接调用`finish`方法后生命周期方法又会怎么执行呢？写个demo看看：
 

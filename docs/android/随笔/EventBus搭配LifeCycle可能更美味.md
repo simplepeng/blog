@@ -13,17 +13,17 @@ Kotlin扩展函数：可以为已经存在的类添加新的方法的黑魔法�
 在使用`EventBus`时，我们每次在需要接受通知的地方，都需要`注册`和`解绑`监听函数。类似下面的模板代码：
 
 ```java
-		@Override
-    protected void onStart() {
-        super.onStart();
-        EventBus.getDefault().register(this);
-    }
+@Override
+protected void onStart() {
+    super.onStart();
+    EventBus.getDefault().register(this);
+}
 
-		@Override
-    protected void onStop() {
-        super.onStop();
-				EventBus.getDefault().unregister(this);
-    }
+@Override
+protected void onStop() {
+    super.onStop();
+	EventBus.getDefault().unregister(this);
+}
 ```
 
 如果忘记了`unregister`函数，可能就会造成`内存泄露`，`空指针`等奇怪问题。当这个类不需要通知监听时，删除也挺麻烦的。所以很多人可能投向了`LiveDataBus`的怀抱。
