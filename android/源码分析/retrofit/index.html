@@ -3,18 +3,18 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="simplepeng" /><link rel="canonical" href="http://simplepeng.com/blog/android/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/%E6%88%91%E5%AF%B9Retrofit%E7%9A%84%E7%90%86%E8%A7%A3/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="author" content="simplepeng" /><link rel="canonical" href="http://simplepeng.com/blog/android/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/retrofit/" />
       <link rel="shortcut icon" href="../../../img/favicon.ico" />
-    <title>我对Retrofit的理解 - blog</title>
+    <title>Retrofit - blog</title>
     <link rel="stylesheet" href="../../../css/theme.css" />
     <link rel="stylesheet" href="../../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.5.0/styles/github.min.css" />
     
       <script>
         // Current page data
-        var mkdocs_page_name = "\u6211\u5bf9Retrofit\u7684\u7406\u89e3";
-        var mkdocs_page_input_path = "android/\u6e90\u7801\u5206\u6790/\u6211\u5bf9Retrofit\u7684\u7406\u89e3.md";
-        var mkdocs_page_url = "/blog/android/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/%E6%88%91%E5%AF%B9Retrofit%E7%9A%84%E7%90%86%E8%A7%A3/";
+        var mkdocs_page_name = "Retrofit";
+        var mkdocs_page_input_path = "android/\u6e90\u7801\u5206\u6790/retrofit.md";
+        var mkdocs_page_url = "/blog/android/%E6%BA%90%E7%A0%81%E5%88%86%E6%9E%90/retrofit/";
       </script>
     
     <script src="../../../js/jquery-3.6.0.min.js" defer></script>
@@ -83,7 +83,15 @@
                   </li>
                   <li class="toctree-l1 current"><a class="reference internal current" href="#">源码分析</a>
     <ul class="current">
-                <li class="toctree-l2 current"><a class="reference internal current" href="./">我对Retrofit的理解</a>
+                <li class="toctree-l2"><a class="reference internal" href="../eventbus/">Eventbus</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../glide/">Glide</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../leakcanary/">Leakcanary</a>
+                </li>
+                <li class="toctree-l2"><a class="reference internal" href="../okhttp/">Okhttp</a>
+                </li>
+                <li class="toctree-l2 current"><a class="reference internal current" href="./">Retrofit</a>
     <ul class="current">
     <li class="toctree-l3"><a class="reference internal" href="#_1">带着问题看源码</a>
     </li>
@@ -200,9 +208,9 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../.." class="icon icon-home" alt="Docs"></a> &raquo;</li>
           <li>Android &raquo;</li>
-          <li>源码分析 &raquo;</li><li>我对Retrofit的理解</li>
+          <li>源码分析 &raquo;</li><li>Retrofit</li>
     <li class="wy-breadcrumbs-aside">
-        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/源码分析/我对Retrofit的理解.md"
+        <a href="https://github.com/simplepeng/blog/edit/master/docs/android/源码分析/retrofit.md"
           class="icon icon-github"> Edit on GitHub</a>
     </li>
   </ul>
@@ -212,7 +220,7 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
             <div class="section" itemprop="articleBody">
               
-                <h1 id="retrofit">我对Retrofit的理解</h1>
+                <h1 id="retrofit">Retrofit</h1>
 <h2 id="_1">带着问题看源码</h2>
 <ol>
 <li>有了OkHttp，为啥要多造个Retrofit出来</li>
@@ -503,7 +511,7 @@ static class MainThreadExecutor implements Executor {
             </div>
           </div><footer>
     <div class="rst-footer-buttons" role="navigation" aria-label="Footer Navigation">
-        <a href="../../NDK/%E7%BB%99%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0JNI%E6%94%AF%E6%8C%81/" class="btn btn-neutral float-left" title="给已有项目添加JNI/CMake支持"><span class="icon icon-circle-arrow-left"></span> Previous</a>
+        <a href="../okhttp/" class="btn btn-neutral float-left" title="Okhttp"><span class="icon icon-circle-arrow-left"></span> Previous</a>
         <a href="../../%E8%87%AA%E5%AE%9A%E4%B9%89View/%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/" class="btn btn-neutral float-right" title="自定义View的构造方法解析">Next <span class="icon icon-circle-arrow-right"></span></a>
     </div>
 
@@ -531,7 +539,7 @@ static class MainThreadExecutor implements Executor {
         </span>
     
     
-      <span><a href="../../NDK/%E7%BB%99%E5%B7%B2%E6%9C%89%E9%A1%B9%E7%9B%AE%E6%B7%BB%E5%8A%A0JNI%E6%94%AF%E6%8C%81/" style="color: #fcfcfc">&laquo; Previous</a></span>
+      <span><a href="../okhttp/" style="color: #fcfcfc">&laquo; Previous</a></span>
     
     
       <span><a href="../../%E8%87%AA%E5%AE%9A%E4%B9%89View/%E8%87%AA%E5%AE%9A%E4%B9%89View%E7%9A%84%E6%9E%84%E9%80%A0%E6%96%B9%E6%B3%95%E8%A7%A3%E6%9E%90/" style="color: #fcfcfc">Next &raquo;</a></span>
