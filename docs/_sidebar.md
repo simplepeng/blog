@@ -4,3 +4,19 @@
   * [获取视频封面图Bitmap](ffmpeg/get_video_cover_bitmap.md)
   * [编译成动态库](ffmpeg/compile_to_so.md)
   * [编译可执行命令的FFmpeg](ffmpeg/compile_to_run_cmd_so.md)
+* JNI
+  * [JNI学习笔记](jni/learn_jni.md)
+  * [CMAKE学习笔记](jni/learn_cmake.md)
+  * [JNI输出LOG](jni/jni_log.md)
+  * [给已有项目添加JNI支持](jni/exist_project_support_jni.md)
+* JetPack
+  * [介绍](jetpack/arch_components.md)
+  * [ViewModel](jetpack/viewmodel.md)
+  * [LiveData](jetpack/livedata.md)
+  * [Room](jetpack/room.md)
+* 逆向
+  * [使用FRIDA-DEXDump脱壳](hack/use_frida_dex_dump.md)
+  * [使用MuMu模拟器脱360加固的壳](hack/use_mumu_dump_dex.md)
+* 其他
+  * [FFmpeg-公司技术分享](others/ffmpeg_company_technique%20sharing.md)
+  * [MacOS-机械键盘无法识别](others/macos_mechanical_keyboard.md)
