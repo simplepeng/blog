@@ -1,4 +1,4 @@
-# 使用Parcelize注解简化Parcelable
+# 使用Parcelize注解简化Parcelable实现
 
 ## Parcelize注解
 

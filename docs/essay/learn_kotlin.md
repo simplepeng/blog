@@ -1,4 +1,4 @@
-# Kotlin入门讲解
+# Kotlin入门
 
 ## Kotlin简介
 
