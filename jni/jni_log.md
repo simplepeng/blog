@@ -1,4 +1,4 @@
-# JNI输出原生LOG
+# JNI输出LOG
 
 我们可以在c/cpp代码中用**print**函数输出log信息，但是这样在**logcat并**不会显示，好在Android已经给我提供了相应的方法解决这个问题：使用**log.h**头文件
 

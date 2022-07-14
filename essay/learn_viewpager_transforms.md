@@ -1,4 +1,4 @@
-# ViewPagerTransforms的深入理解
+# 深入理解ViewPagerTransforms
 
 github地址：
 > https://github.com/simplepeng/ViewPagerTransforms

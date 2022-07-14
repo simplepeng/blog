@@ -1,4 +1,4 @@
-# [译]Android Material buttons
+# [译]Android Material Buttons
 
 ## 前言
 

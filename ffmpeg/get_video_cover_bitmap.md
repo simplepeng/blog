@@ -1,4 +1,4 @@
-# 获取视频首帧转Bitmap封面图
+# 获取视频封面图Bitmap
 
 这是学习ffmpeg的第二篇博客，主要是使用ffmpeg获取本地视频文件的第一帧数据转换为Bitmap，然后抛给上层ImageView显示。
 
@@ -142,7 +142,7 @@ jobject createBitmap(JNIEnv *env,
 }
 ```
 
-常规操作，在native层调用java层的方法，jni不熟的可以查看[我的JNI学习笔记](https://github.com/simplepeng/KeepLearning/blob/master/Android/NDK/JNI学习笔记.md)
+常规操作，在native层调用java层的方法，jni不熟的可以查看[我的JNI学习笔记](../ndk/learn_jni.md)
 
 ## 使用libyuv写入rgb像素信息
 
@@ -205,7 +205,7 @@ env->ReleaseStringUTFChars(path, _path);
 > 
 > demo.simple.example_ffmpeg D/MainActivity: bitmap byteCount == 8294400
 
-![界面实现](https://raw.githubusercontent.com/simplepeng/ImageRepo/master/android/image-20200706171406818.png)
+![界面实现](imgs/ffmpeg_1_1.png)
 
 ## 完整代码
 
