@@ -9,3 +9,6 @@
 [大佬的博客](https://blog.zhaiyifan.cn/)
 
 [大佬自己的源码分析](http://blog.zhaiyifan.cn/2016/01/16/BlockCanaryTransparentPerformanceMonitor/)
+
+## 如何监听卡顿的
+

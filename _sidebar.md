@@ -51,5 +51,5 @@
   * [OKHttp](source_analysis/okhttp.md)
   * [Glide](source_analysis/glide.md)
 * 其他
-  * [FFmpeg-公司技术分享](others/ffmpeg_company_technique%20sharing.md)
+  * [FFmpeg-公司技术分享](others/ffmpeg_company_technique_sharing.md)
   * [MacOS-机械键盘无法识别](others/macos_mechanical_keyboard.md)
