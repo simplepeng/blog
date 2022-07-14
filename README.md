@@ -2,6 +2,8 @@
 
 simplepeng的独立博客站点，随缘记录和分享知识。
 
+[https://www.simplepeng.com/blog](https://www.simplepeng.com/blog)
+
 ## 关于作者
 
 [https://github.com/simplepeng](https://github.com/simplepeng)
