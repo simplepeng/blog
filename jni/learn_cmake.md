@@ -1,8 +1,11 @@
 # Cmake学习笔记
 
-## 简介
+## 参考资料
 
-[官网](https://cmake.org/documentation/)
+* [软件构建: CMake 快速入门](https://www.bilibili.com/video/BV1rR4y1E7n9)
+* [官网](https://cmake.org/documentation/)
+
+## 简介
 
 CMake 是一个跨平台的，开源的构建系统（BuildSystem）。CMake 可以通过 CMakeLists.txt 文件来产生特定平台的标准的构建文件，例如：为 Unix 平台生成makefiles文件（使用GCC编译），为 Windows MSVC 生成 projects/workspaces（使用VS IDE编译）或Makefile文件（使用nmake编译）
 
