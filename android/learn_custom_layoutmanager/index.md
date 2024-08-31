@@ -248,7 +248,7 @@ removeAndRecycleViewAt(int index, @NonNull Recycler recycler)
 
 #### OrientationHelper帮助类
 
-![img_orientation_helper.png](https://i.loli.net/2020/09/08/AD6sjHya9NnpcFW.png)
+![img_orientation_helper.png](img_1.png)
 
 这个帮助类值得好好夸赞，这也是我在阅读`LinearLayoutManager`源码时发现的，OrientationHelper是一个抽象类，抽象了大量便利的方法，并且提供了两个静态方法`createHorizontalHelper`和`createVerticalHelper`用来创建相应方向的帮助类供开发者使用。使用OrientationHelper可以大大减少如下我在[StackLayoutManager](https://github.com/simplepeng/StackLayoutManager)的样板代码。
 
@@ -279,7 +279,7 @@ removeAndRecycleViewAt(int index, @NonNull Recycler recycler)
 
 | https://github.com/simplepeng/StackLayoutManager             | https://github.com/simplepeng/PickerLayoutManager            |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| ![img_stack_layout_manager.png](https://i.loli.net/2020/09/08/iHwhxlT5Ddm2ECg.png) | ![img_picker_layout_manager.png](https://i.loli.net/2020/09/08/Bk1pQf43EyOjxIe.png) |
+| ![img_stack_layout_manager.png](img_2.png) | ![img_picker_layout_manager.png](img_3.png) |
 
 #### 继承LayoutManager并实现generateDefaultLayoutParams()方法
 
@@ -412,7 +412,7 @@ class StackLayoutManager: RecyclerView.LayoutManager(){
 
 上面的代码很简单了，相信写过自定义ViewGroup的人都能看懂。上面代码很简单的实现了一个`横向的LinearLayoutManager`，如图所示：
 
-![img_blog_lm_on_layout.png](https://i.loli.net/2020/09/08/dOY2TqHgxeS1oL8.png)
+![img_blog_lm_on_layout.png](img_4.png)
 
 并且在`layout`结束后，增加了一个输出`childCount`的方法。
 
@@ -475,7 +475,7 @@ override fun scrollHorizontallyBy(
     }
 ```
 
-![gif_blog_lm_sroll_horizontal.gif](https://i.loli.net/2020/09/08/zphtQDd26m9Kgik.gif)
+![gif_blog_lm_sroll_horizontal.gif](img_5.png)
 
 就这么简单，我们的LayoutManager已经可以滑动了。但是随之而来又发现一个问题：“滑动只是在已存在的这几个children间滑动”。这不是废话吗，我们都没写填充和回收View的方法，肯定没有新的itemView添加进来呀，超过屏幕的View也不会回收呀。下面开始增加填充View和回收View的代码块。
 
@@ -542,7 +542,7 @@ override fun scrollHorizontallyBy(
     }
 ```
 
-![gif_blog_lm_sroll_recycle.gif](https://i.loli.net/2020/09/08/eDi39jlEJFLT2hr.gif)
+![gif_blog_lm_sroll_recycle.gif](img_6.gif)
 
 可以看到我们在拖动是时候，LayoutManager确实回收了超出屏幕的itemView，并且通过查看log可知childCount和scrapSize同样是合格的。
 
@@ -651,7 +651,7 @@ override fun scrollHorizontallyBy(
 
 上面的代码我故意写得很啰嗦，应该很好理解了。而且聪明的宝宝应该发现了这个`fill`方法跟`onLayoutChildren`的方法是很耦合的，其实是可以合并成一个的，就像`LinearLayoutManager`的`fill`方法一样。还有就是再次记住上面的代码是用来讲解的伪代码，并不是`StackLayoutManager`的真实代码，为了容易理解，我删除了大量的检测方法，以及写的非常啰嗦。
 
-![gif_blog_lm_sroll_fill.gif](https://i.loli.net/2020/09/08/ZarPh2Fvwli8ySt.gif)
+![gif_blog_lm_sroll_fill.gif](img_7.gif)
 
 > D/scrollHorizontallyBy: childCount = 9 -- scrapSize = 0
 > D/scrollHorizontallyBy: childCount = 10 -- scrapSize = 0
@@ -760,7 +760,7 @@ override fun scrollHorizontallyBy(
     }
 ```
 
-![gif_blog_lm_sroll_to_position.gif](https://i.loli.net/2020/09/10/jN8VHoMxGePBhA7.gif)
+![gif_blog_lm_sroll_to_position.gif](img_8.gif)
 
 仔细看，我们的LayoutManager是不是可以scrollToPosition了。但是这还不是完整的实现，如果你仔细对比`LinearLayuotManager`的scrollToPosition就能发现差别所在，我这里只是抛砖引玉一下，能让大家知道如何适配scrollToPosition就行了，完整的实现大多数就是细节的处理，和套路无关，听懂掌声👏👏👏👏。
 
@@ -809,7 +809,7 @@ override fun scrollHorizontallyBy(
     }
 ```
 
-![gif_blog_lm_smooth_sroll_to_position_1.gif](https://i.loli.net/2020/09/10/7Ri96fjVWIbXaFT.gif)
+![gif_blog_lm_smooth_sroll_to_position_1.gif](img_9.gif)
 
 咦！这不是scrollToPosition的效果吗？也不是我们smoothScroll的平滑效果呀。于是我继续看博客，翻源码，也还是看到了Dave大神的博客才找到了真正的重点`computeScrollVectorForPosition(int targetPosition)`这个方法。这个方法就在`LinearLayoutManager`的`smoothScrollToPosition`方法下面，但是没有注释，是真难让人猜。
 
@@ -867,7 +867,7 @@ class BlogLayoutManager : RecyclerView.LayoutManager() ,RecyclerView.SmoothScrol
 }
 ```
 
-![gif_blog_lm_smooth_sroll_to_position_2.gif](https://i.loli.net/2020/09/10/laMBNjeKUXdvGV6.gif)
+![gif_blog_lm_smooth_sroll_to_position_2.gif](img_10.gif)
 
 细心的小朋友又发现了，我们平滑滚动到`50`这个position，但是`50`是靠后停止的，并不是滚动到前面边缘的位置停止。没错，正确的效果就是这样，包括`LinearLayoutManager`的`smoothScrollToPosition`的效果也是这样。所以前面我才会说`scrollToPosition`的实现不是完整效果，完整效果应该和`smoothScrollToPosition`一样，scrollToPosition到后面的position就是应该`从后往前填充`，scrollToPosition到前面的position才是`从前往后填充`。
 
@@ -885,7 +885,7 @@ return PointF(direction.toFloat(), 0f)
 
 这个问题我也是无意中发现的。
 
-![gif_blog_lm_keyborad.gif](https://i.loli.net/2020/09/10/PO7J4EVCkbtjpHu.gif)
+![gif_blog_lm_keyborad.gif](img_11.gif)
 
 如图所示，我们在滚动一段距离后，让软键盘弹出，发现LayoutManager自动回到`position=0`那里，再滚动一段距离，软键盘收起，LayoutManager又自动回到`position=0`那里。分析原因可以知道是`onLayoutChildren`方法被重新调用导致，因为`onLayoutChildren`方法中我们的`currentPosition=0`，所以导致了LayoutManager从0开始重新布局。下面我们开始修正position为真实滚动后的值。
 
@@ -917,7 +917,7 @@ return PointF(direction.toFloat(), 0f)
 
 上面示例代码注意`detachAndScrapAttachedViews(recycler)`方法是在`修正position`方法的后面，因为先调用`detachAndScrapAttachedViews`后，childCount就会一直为`0`啊！
 
-![gif_blog_lm_keyborad_fix.gif](https://i.loli.net/2020/09/10/Af4yXWcCgY8n7ko.gif)
+![gif_blog_lm_keyborad_fix.gif](img_12.gif)
 
 还是如图所示，我们拖动到了`position=25`的itemView那里，然后软键盘弹起`onLayoutChildren`调用，这次的确是从`currentPosition=25`开始重新布局。
 
@@ -942,7 +942,7 @@ return PointF(direction.toFloat(), 0f)
     }
 ```
 
-![gif_blog_lm_keyborad_fix_2.gif](https://i.loli.net/2020/09/10/vqFE3rkwBot1DVi.gif)
+![gif_blog_lm_keyborad_fix_2.gif](img_13.gif)
 
 OK~，收工！啥？要实现的一个`StackLayoutManager`，为啥你这个是`LinearLayoutManger`！都看到这里了如果你还能有这种问题，证明我写了一篇水文，逃~
 

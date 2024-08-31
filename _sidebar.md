@@ -1,5 +1,5 @@
 * 随笔
-  * [学会自定义LayoutManager](essay/learn_custom_layoutmanager)
+  * [学会自定义LayoutManager](android/learn_custom_layoutmanager/index.md)
   * [从Java切换到Kotlin的新特性](essay/from_java_to_kotlin_new_feature.md)
   * [深入理解ViewPagerTransforms](essay/learn_viewpager_transforms.md)
   * [MaxLineLayoutManager](essay/max_line_layout_manager.md)
@@ -24,6 +24,8 @@
   * [Android Material Buttons](essay/material_buttons.md)
   * [PopupMenu简单使用](essay/learn_popup_menu.md)
   * [AS显示Navigation标签](essay/as_show_navigation_menu.md)
+* Harmony Next
+  * [DevEco如何开启NewUI](dev_eco_enable_new_ui/index.md)
 * FFmpeg
   * [获取视频封面图Bitmap](ffmpeg/get_video_cover_bitmap.md)
   * [编译成动态库](ffmpeg/compile_to_so.md)
