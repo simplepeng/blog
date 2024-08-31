@@ -76,8 +76,6 @@ public class DragLayout extends LinearLayout {
 }
 ```
 
-![](https://ws1.sinaimg.cn/mw690/00677ch9gy1focugums9dg309g0g1gmi)
-
 这样就很简单的实现了几个可以拖动的view，布局很简单，就DragLayout里面放了3个TextView就不贴出来了。
 
 ## 创建ViewDragHelper的实例

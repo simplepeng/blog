@@ -20,7 +20,6 @@ void transformPage (View page, float position)
 
 ### 首先是一个很平常的viewpager
 
-![这里写图片描述](http://img.blog.csdn.net/20160819101519477)
 ```java
 package com.example.simple.pagertransformdemo;
 
@@ -124,7 +123,6 @@ public class MainActivity extends AppCompatActivity {
 </RelativeLayout>
 ```
 ### 接着是一个放大进入的viewpager
-![这里写图片描述](http://img.blog.csdn.net/20160819142937893)
 
 我们多加了一行代码
 
@@ -158,12 +156,13 @@ public void setPageTransformer(boolean reverseDrawingOrder, PageTransformer tran
 ```
 
 將 reverseDrawingOrder 改爲 false 看看效果
+
 ```java
 viewPager.setPageTransformer(false ,new ZoomInTransform());
 ```
-![这里写图片描述](http://img.blog.csdn.net/20160819151005806)
 
 再看看ZoomInTransform的代碼就一目了然了
+
 ```java
 public class ZoomInTransform implements ViewPager.PageTransformer {
 
@@ -216,7 +215,7 @@ if (mPageTransformer != null) {
 ```
 
 ### 下面来一个炫酷点的，感觉有点3D效果的样子
-![这里写图片描述](http://img.blog.csdn.net/20160819175453552)
+
 ```java
 public class SimplePageTransform implements ViewPager.PageTransformer {
 
@@ -280,7 +279,7 @@ public class SimplePageTransform implements ViewPager.PageTransformer {
 由此以及上面transformPage方法的出处可得出规律，transformPage返回的view并不是一个，而是根据相应的position的返回相应的view。
 </br>
 也由此可以提出viewpager的坐标系（ps:不会画图请不要打我）
-![这里写图片描述](http://img.blog.csdn.net/20160820224621697)
+
 浅蓝色为left view，红色为center view，深蓝色为right view，当滑动事件开始，他们的关系也会跟变化，所以可得出在[-1,0)这个区间为left，(0，1]这个区间为right，只有当等于0才为center。如果viewpager里面view很多肯定就还会有-2，+2等等的其他坐标点，但是我们只关注left，center，right这3个view上就可以实现很多炫酷的动画啦！
 
 ### 总结

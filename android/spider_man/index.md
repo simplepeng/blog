@@ -2,7 +2,7 @@
 
 ## 一图胜前言
 
-![crash_info.png](https://i.loli.net/2020/12/30/tlm3ysL8QI16He7.png)
+![crash_info.png](img_1.png)
 
 上图中，我们模拟了NullPointerException的发生，系统捕获了该异常，并用一个界面展示了出来。
 
