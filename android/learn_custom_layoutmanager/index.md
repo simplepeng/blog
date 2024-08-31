@@ -475,7 +475,7 @@ override fun scrollHorizontallyBy(
     }
 ```
 
-![gif_blog_lm_sroll_horizontal.gif](img_5.png)
+![gif_blog_lm_sroll_horizontal.gif](img_5.gif)
 
 就这么简单，我们的LayoutManager已经可以滑动了。但是随之而来又发现一个问题：“滑动只是在已存在的这几个children间滑动”。这不是废话吗，我们都没写填充和回收View的方法，肯定没有新的itemView添加进来呀，超过屏幕的View也不会回收呀。下面开始增加填充View和回收View的代码块。
 
@@ -680,7 +680,7 @@ override fun scrollHorizontallyBy(
     }
 ```
 
-![gif_blog_lm_sroll_fill_edge.gif](https://i.loli.net/2020/09/09/GWID8K5csQyzYAo.gif)
+![gif_blog_lm_sroll_fill_edge.gif](img_14.gif)
 
 就这样简单，边缘检测也完成了。
 
