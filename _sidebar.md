@@ -24,6 +24,10 @@
   * [Android Material Buttons](android/material_buttons.md)
   * [PopupMenu简单使用](android/learn_popup_menu.md)
   * [AS显示Navigation标签](android/as_show_navigation_menu.md)
+* 翻译
+  * [Jetpack Compose: Best Practices 最佳实践](translate/jetpack_compose_best_practices.md)
+  * [Jetpack Compose Side Effects in Details 副作用的详细信息](translate/jetpack_compose_side_effects_in_details/index.md)
+  * [ Kotlin Tips : Keep Your Code Clean - Kotlin技巧：保证你的代码整洁](translate/kotlin_tips_keep_your_code_clean.md)
 * Harmony Next
   * [DevEco如何开启NewUI](dev_eco_enable_new_ui/index.md)
 * FFmpeg
