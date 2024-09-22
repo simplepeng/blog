@@ -1,4 +1,5 @@
 * Android
+  * [没错，我给androidx修了一个bug！](android/fix_textfontweight_not_taking_effect_on_appcompat_textview/index.md)
   * [学会自定义LayoutManager](android/learn_custom_layoutmanager/index.md)
   * [从Java切换到Kotlin的新特性](android/from_java_to_kotlin_new_feature/index.md)
   * [深入理解ViewPagerTransforms](android/learn_viewpager_transforms.md)
